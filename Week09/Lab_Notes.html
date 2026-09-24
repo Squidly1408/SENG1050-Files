@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SENG1050 - Laboratory 9</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style type="text/css">
+        kbd,
+        samp,
+        code,
+        span.file {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="body">
+
+        <h1>SENG1050<br>Lab 9</h1>
+        <p>
+            In this lab, you will gain experience in good web design and HCI practices.
+        </p>
+
+        <hr>
+
+        <div class="toc">
+            <a href="#shame">Task 1</a> - <a href="#media">Task 2*</a> -
+            <a href="#stress">Task 3</a> - <a href="#lighthouse">Task 4</a>
+        </div>
+        <hr>
+
+        <div id="Milestone">
+            <h2 style="color: red">Assessment 3 Milestone 2 (Important!)</h2>
+            <p>
+                Approaching this week, you should have completed milestone 1 of Assessment 3 (Web-Based Assignment 2).
+                Time yourselves and try to complete milestone 2 of Assessment 3 by Week 11.
+                Please refer to the Assessment 3 documentation and follow the steps listed
+                carefully.
+            </p>
+            <p>
+                Upon completion of milestone 2, approach your lab instructor to claim
+                another 1% of your Assessment 3 score.
+                Once you have been marked off for the milestone, continue the tasks below.
+            </p>
+        </div>
+        <hr>
+        <h2 id="shame">Task 1 - User Interface (Optional)</h2>
+        <p>
+            Discuss how you can improve the following problems based on the information in the
+            <a href="http://hallofshame.gp.co.at/shame.htm" target="_blank"> Interface Hall of Shame</a>.
+        </p>
+        <ol>
+            <li>
+                Is there progress? <br><br>
+                <img src="noProgressBar.gif" alt="no progress bar" /> <br><br>
+                or <br><br>
+                <img src="progressBar.gif" alt="progress bar" /> <br><br>
+            </li>
+            <li>
+                I want them all! <br><br>
+                <img src="checkBox.gif" alt="no progress bar" /> <br><br>
+            </li>
+            <li>
+                Fun with scrolling! <br><br>
+                <img src="scroll1.gif" alt="no progress bar" /> <br><br>
+                or <br><br>
+                <img src="scroll2.gif" alt="progress bar" /> <br><br>
+            </li>
+            <li>
+                More tabs please! <br><br>
+                <img src="tab.gif" alt="no progress bar" /> <br><br>
+                or <br><br>
+                <img src="noTabs.gif" alt="progress bar" /> <br><br>
+            </li>
+            <li>
+                Helpful tips! <br><br>
+                <img src="tooltips.gif" alt="no progress bar" /> <br><br>
+            </li>
+            <li>
+                Green for the go! <br><br>
+                <img src="color.gif" alt="no progress bar" /> <br><br>
+            </li>
+        </ol>
+        <hr>
+
+        <h2 id="media">Task 2 - Media Queries</h2>
+        <p>
+            Media queries can be used to ensure that CSS rules only apply to certain
+            clients (e.g., desktop, mobile, etc.).
+            We will look at some simple media queries using the provided
+            <em>form-validation.html</em> from Canvas:
+        </p>
+        <ol>
+            <li>
+                Create a <em>style.css</em> file and link it to the HTML document using the
+                <em>link</em> tag.
+            </li>
+            <li>
+                In the stylesheet, add the following code: <br>
+                <code>
+                    @media (max-width: 600px) {body {color: yellow;}} <br>
+                    @media (min-width: 601px) {body {color: green;}} <br>
+                </code>
+            </li>
+            <li>
+                Adjust the width of the browser and watch how the text colour changes
+                depending on which media query evaluates to true.
+            </li>
+            <li>
+                Write a media query to make the text size larger on mobile devices
+                (<i>Hint:</i> Use <code>@media (hover: none)</code> to target mobile
+                devices.)
+                Through the Inspector, check whether your query works by using the 'Toggle
+                device emulation' button (second button on top left) to switch to mobile
+                phone emulation.
+            </li>
+            <li>
+                Write a media query to change the background colour when the viewport width
+                is less than the viewport height (i.e., portrait view).
+                <i>Hint:</i> Use <code>min-aspect-ratio</code> or
+                <code>max-aspect-ratio</code> in your query.
+            </li>
+        </ol>
+        <hr>
+        <h2 id="stress">Task 3 - Stress Test (Optional)</h2>
+        <p>
+            An important part of HCI testing is to have other people look at your design, as what seems obvious to
+            you may not be so obvious to others.
+        </p>
+        <ol>
+            <li>
+                Take a look at the
+                <a href="https://mail.instone.org/navstress" target="_blank">navigation stress test</a>
+                for websites.
+                Look at the Hockey example at the bottom of the page and note the parts of the site that could be
+                improved based on the results of the stress test.
+            </li>
+            <li>
+                Now try the stress test on a
+                <a href="https://www.wayfair.com/decor-pillows/pdp/symple-stuff-berglund-adjustable-044-tension-rod-w002066485.html"
+                    target="_blank">different website</a>.
+                Go through the stress test questions and discuss the results.
+                What questions are hard to answer?
+                How could this page be improved?
+            </li>
+        </ol>
+        <hr>
+        <h2 id="lighthouse">Task 4 - Lighthouse Analysis (Optional)</h2>
+        <p>
+            Chromium-based browsers (e.g., Microsoft Edge and Google Chrome) have an
+            additional tool in their Inspector called 'Lighthouse', which can check many of
+            the common speed, search, and usability issues with websites.
+        </p>
+        <ol>
+            <li>
+                Open a Chromium-based browser with extensions disabled (so they don't impact
+                the results of the test).
+                You can do this by opening the browser with the flag
+                <code>--disable-extensions</code>.
+                For example, Microsoft Edge can be launched using <code>msedge.exe
+                    --disable-extensions</code>.
+            </li>
+            <li>
+                Open the HTML document in Task 2 in this new browser window.
+                Open the Inspector and select the 'Lighthouse' tab.
+            </li>
+            <li>
+                Run a scan in both Desktop and Mobile modes over all categories (except
+                Progressive Web App).
+                Take note of the results.
+            </li>
+            <li>
+                Make adjustments to the page and try to increase the score in each category
+                to 100% as a practice. Note that for our course, you may ignore the HTTPS and CSP issues under the 'Best
+                practices' category.
+            </li>
+        </ol>
+
+        <hr>
+
+    </div>
+
+</body>
+
+</html>

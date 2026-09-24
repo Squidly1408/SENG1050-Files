@@ -1,0 +1,21 @@
+Introduction
+Welcome
+Dear students,
+
+A warm welcome to SENG1050! This course focuses on web technologies and the fundamental concepts of the Internet architecture. You will also learn and gain hands-on experience of world-wide web languages such as HTML, XML, CSS, PHP, and JavaScript.
+
+This Canvas page and your university email will be our primary means of contact. Hence, don't forget to check them regularly.
+
+If you have any questions or feedback regarding the course, don't hesitate to drop me an email at: Adrian.Tan10@newcastle.edu.au.
+
+Hope you enjoy and gain from this semester.
+
+Course coordinator,
+Dr Adrian Tan
+
+Academic Integrity
+As a student at UON, you must strive to adhere to the academic integrity policies and requirements of the University. The University takes any academic misconduct or dishonesty, such as plagiarism, very seriously, and a range of actions and penalties might be taken in response to any misconduct. Therefore, it is very important to become familiar with what is expected of you and the policies that are in place. You can find further information from https://policies.newcastle.edu.au/document/view-current.php?id=35Links to an external site.
+
+New students in their first semester/trimester are required to complete an Academic Integrity Module before the end of the semester/trimester. This online module helps you become familiar with the University's five values of academic integrity that you must uphold while you're a student at UON, as well as reduce plagiarism and academic fraud.
+
+You can access the module and related information about it through this link: https://www.newcastle.edu.au/current-students/study-essentials/assessment-and-exams/academic-integrity/academic-integrity-moduleLinks to an external site.

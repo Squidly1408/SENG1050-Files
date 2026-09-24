@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SENG1050 - Laboratory 6 - Mac</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="body">
+
+        <h1>SENG1050<br>Lab 6 (Mac)</h1>
+
+        <p>
+            In this lab, you will gain experience in configuring the Apache web server and create custom behaviour using
+            PHP.
+        </p>
+
+        <hr>
+
+        <div class="toc"><a href="#xampp">Task 1*</a> - <a href="#apache">Task 2*</a> - <a href="#php">Task 3*</a> - <a href="#form">Task 4*</a> - <a
+                href="#advanced">Task 5</a></div>
+
+        <hr>
+
+        <h2 id="xampp">Task 1 - Install XAMPP</h2>
+
+        <p>
+            It is recommended to install XAMPP on your personal computer. The
+            instructions are as follows:
+        </p>
+
+        <ol>
+            <li>
+                Download XAMPP from <a
+                    href="https://sourceforge.net/projects/xampp/files/XAMPP%20Mac%20OS%20X/8.2.4/xampp-osx-8.2.4-0-installer.dmg"
+                    target="_blank">here</a>.
+            </li>
+            <li>
+                Launch the downloaded installer. <br>
+                Note that if your Mac runs on Apple Silicon, you are also required to install Rosetta as prompted.
+            </li>
+            <li>
+                After Rosetta is installed, continue with the XAMPP installation wizard to complete installation. <strong>Keep all installation settings and directory to default.</strong>
+            </li>
+            <li>
+                In the Launchpad, navigate to the XAMPP folder. <br>
+                Double-click to launch <span class="file">manager-osx</span>, which is the XAMPP Control
+                Panel.
+            </li>
+            <li>
+                In the XAMPP Control Panel, navigate to the 'Manage Servers' tab.<br>
+                Start the 'Apache Web Server' module.
+            </li>
+            <li>
+                In your browser, enter <code>localhost</code> in the URL bar. Set up is done if you see the XAMPP
+                Homepage.
+            </li>
+        </ol>
+
+        <p>
+            In case you can't or do not prefer to install XAMPP on your personal computer, you may use the provided virtual machine. Instructions
+            to access the virtual machine are as follows (<strong>skip to Task 2 if you have XAMPP installed</strong>):
+        </p>
+
+        <ol>
+            <li>
+                Start your virtual machine from <a href="https://labs.azure.com/" target="_blank">Azure Labs</a> (use
+                your regular student email to login) and wait until the VM has started. <br>
+                If you cannot see the
+                SENG1050 VM in the list, check your email for an invite link and register.
+            </li>
+            <li>
+                Click the small computer icon to download a connection link (SENG1050.rdp)
+            </li>
+            <li>
+                Before connecting to the virtual machine, you have to
+                download and install <a href="https://apps.apple.com/au/app/microsoft-remote-desktop/id1295203466?mt=12"
+                    target="_blank">Microsoft Remote Desktop</a> as your remote desktop client.
+            </li>
+            <li>
+                Double-click on the rdp file and login to the VM using the password 'K43NJR9nHEsfbJ' (without the
+                quotes). <br>
+                Ignore any certificate error message and click 'Yes' to proceed.
+            </li>
+            <li>
+                If you are using the VM, you have to follow the Windows version of our lab manual to complete the XAMPP installation and all lab tasks.
+            </li>
+        </ol>
+
+        <hr>
+
+        <h2 id="apache">Task 2 - Configure Apache Web Server</h2>
+
+        <p>
+            In this task, you are going to learn how to configure the Apache web server to host a website and serve
+            content securely. You do not need to be familiar with every possible configuration setting in Apache. The
+            main aim of this task is for you to become familiar with how to host a website, and how to adjust
+            commonly-used security settings. In case you are stuck or are curious about the reasoning behind these
+            settings, you may refer
+            to the supplementary video on Canvas (under the manual).
+        </p>
+
+        <ol>
+            <li>
+                Start the XAMPP Control Panel (<span class="file">manager-osx</span> in Launchpad).
+            </li>
+            <li>
+                In the XAMPP Control Panel, start the Apache module.
+            </li>
+            <li>
+                Navigate to the default document root of XAMPP, which is
+                <code>/Applications/XAMPP/xamppfiles/htdocs</code>. <br>
+                In this folder, create a
+                new directory for your website. Name the directory <code>seng1050</code> (Note that you can change this
+                to any name).
+            </li>
+            <li>
+                Create a copy of your <span class="file">template.html</span> file from Lab 2, and place it in the
+                <code>seng1050</code> directory. <br>
+                Rename the copy to <span class="file">index.html</span>.
+            </li>
+            <li>
+                Navigate to <code>/Applications/XAMPP/xamppfiles/etc</code>. <br>
+                Open the <span class="file">httpd.conf</span> file. <br>
+                Uncomment the line (Remove '#'): <code>Include etc/extra/httpd-vhosts.conf</code>
+            </li>
+            <li>
+                Navigate to <code>/Applications/XAMPP/xamppfiles/etc/extra</code>. <br>
+                Open the <span class="file">httpd-vhosts.conf</span> file. <br>
+                Include the following lines at the end of the file:
+                <pre><code>&lt;VirtualHost *:80>
+    DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs/seng1050"
+    ServerName seng1050.com
+    &lt;Directory "/Applications/XAMPP/xamppfiles/htdocs/seng1050">
+        Options Indexes
+    &lt;/Directory>
+&lt;/VirtualHost>
+        </code></pre>
+            </li>
+            <li>
+                Launch the Terminal application. <br>
+                Type the command <code>sudo nano /etc/hosts</code> to edit the <span class="file">hosts</span> file in
+                <code>/etc</code>. <br>
+                Add the following line at the end of the file:
+                <pre><code>127.0.0.1 seng1050.com</code></pre>
+                Save the file by pressing <code>^O</code>. <br>
+                Note that you can change <code>seng1050.com</code> to any preferred website address as long as it
+                matches the ServerName in Step 6.
+            </li>
+            <li>
+                Restart Apache in the XAMPP control panel.
+            </li>
+            <li>
+                Open the browser and enter <code>http://seng1050.com</code> in the URL bar. <br>
+                You should see your <span class="file">index.html</span> file in the browser.
+            </li>
+        </ol>
+        <p>Now with the virtual host up and running, we will look at some commonly used Apache security configuration
+            settings.
+        </p>
+
+        <ol>
+            <li>
+                First, we will remove the OS and version information Apache sends in every HTTP response. <br>
+                In the browser, open the Inspector and select the Network tab. <br>
+                Refresh the page and look at the headers
+                of the response. <br>
+                Notice the field 'Server' that exposes the version of Apache and our OS? We want to
+                remove as much information from this as possible.
+            </li>
+            <li>
+                Navigate to <code>/Applications/XAMPP/xamppfiles/etc</code>.
+                <br>
+                Open the <span class="file">httpd.conf</span> file. <br>
+                Include the following lines at the end of the file:
+                <pre><code>
+ServerSignature Off
+ServerTokens Prod
+        </code></pre>
+            </li>
+            <li>
+                Save the file and restart Apache in the XAMPP control panel.
+            </li>
+            <li>
+                Refresh the page in the browser and view the response headers in the inspector again. <br>
+                If you have set
+                the configuration correctly, only the name of the web server, 'Apache' should be shown in the 'Server'
+                field.
+            </li>
+            <li>
+                Second, we will remove information about our website directory. <br>
+                Rename the <span class="file">index.html</span> file in the <code>seng1050</code> folder to <span
+                    class="file">index_temp.html</span>. <br>
+                Refresh the page and you will notice that without finding the
+                default document, Apache shows a listing of all files in the directory. This can expose information we
+                want to keep secret. Let's fix this now!</li>
+            <li>
+                Navigate to <code>/Applications/XAMPP/xamppfiles/etc/extra</code>. <br>
+                Open the <span class="file">httpd-vhosts.conf</span> file. <br>
+                Change the line <code>Options Indexes</code> to <code>Options -Indexes</code>
+            </li>
+            <li>
+                Save the file and restart Apache in the XAMPP control panel.
+            </li>
+            <li>
+                Refresh the page in the browser. <br>
+                You should now see a 403 Forbidden error message instead of a full directory
+                listing.
+            </li>
+        </ol>
+        <p>If you're interested in more information on securing and configuring Apache, details can be found <a
+                href="https://ipm.hutton.ac.uk/sites/ipm.hutton.ac.uk/files/Apache%20Web%20Server%20Hardening%20and%20Security%20Guide.pdf"
+                target="_blank">here</a>.</p>
+        <hr />
+
+        <h2 id="php">Task 3 - Basic PHP</h2>
+
+        <p>
+            In this task, you are going to learn how to use PHP to create and send HTML documents to the client.
+        </p>
+
+        <ol>
+            <li>
+                Create a new file in your website called <span class="file">index.php</span>. Copy the following code
+                into the file:
+                <pre><code>&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;meta charset="utf-8">
+        &lt;title>Hello World&lt;/title>
+    &lt;/head>
+    &lt;body>
+        &lt;?php
+            echo "&lt;p>Hello World&lt;/p>";
+        ?>
+    &lt;/body>
+&lt;/html>
+        </code></pre>
+            </li>
+            <li>
+                Now, open your website in the browser (e.g., http://seng1050.com). <br>
+                As <span class="file">index.php</span> is one of the default
+                documents in Apache, you should see the file load, with "Hello World" displayed on the page.
+            </li>
+            <li>
+                Next, we will edit the <span class="file">index.php</span> file to generate a countdown from 10 to 0
+                using a while loop.
+            </li>
+            <li>
+                Replace the echo statement in the PHP script with the following:
+                <pre><code>$counter = 10;
+while ($counter >= 0) {
+    echo "&lt;p>" . $counter-- . "&lt;/p>";
+}
+        </code>
+        </pre>
+            </li>
+            <li>
+                Save the file and reload the page in your browser. You should see a countdown from 10 to 0.
+            </li>
+            <li>
+                Now, we will edit the file to display only even numbers in the countdown. In the PHP script, add the
+                following code just before the echo statement within the 'while' loop:
+                <pre><code>if ($counter % 2 != 0) {
+    $counter--;
+    continue;
+}</code></pre>
+            </li>
+            <li>
+                Save the file and reload the page in your browser. You should see a countdown from 10 to 0 with only the
+                even numbers displayed.
+            </li>
+            <li>
+                Now, it's time for you to try some PHP tasks on your own. Edit your PHP file to perform the following
+                tasks:
+                <ul>
+                    <li>Declare the variable <code>$the_string = "The cat sat on the mat";</code>. <br>
+                        Calculate the
+                        length of this string, as well as the number of times the letter 't' appears in it. <br>
+                        (Hint: Use <code>strlen</code> and <code>substr_count</code>.)
+                    </li>
+                    <li>Display the basic times-tables for 1x1 through to 12x12.</li>
+                    <li>
+                        Display all the leap years from 1900 to 2022. <br>
+                        (Hint: Leap years are the years that are either:
+                        evenly divisible by 4 AND not evenly divisible by 100; OR: evenly divisible by 4 AND 400.)
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>If you run into problems with your PHP code, try outputting the value of variables with echo statements, or
+            checking for syntax errors with a <a href="https://onlinephp.io/" target="_blank">PHP tester</a>.</p>
+        <hr />
+
+        <h2 id="form">Task 4 - PHP With Form Data</h2>
+
+        <p>
+            PHP becomes very powerful when used with dynamic data collected from the user via a form. In this task, we
+            will learn to use form data with PHP.
+        </p>
+
+        <ol>
+            <li>
+                Create a new file in your website called <span class="file">form.html</span>. Copy the following code
+                into the file:
+                <pre><code>&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;meta charset="utf-8">
+        &lt;title>My Form&lt;/title>
+    &lt;/head>
+    &lt;body>
+        &lt;form method="POST" action="index.php">
+            &lt;label for="name">Name&lt;/label>
+            &lt;input type="text" name="fname" id="name" />&lt;br>&lt;br>
+            &lt;input type="submit">
+        &lt/form>
+    &lt;/body>
+&lt;/html></code></pre>
+            </li>
+            <li>
+                Remember, the value of the 'name' attribute is what we will use to get the value of the input in our PHP
+                script.
+            </li>
+            <li>
+                Now, edit your <span class="file">index.php</span> file again to get the value of the text box, and
+                display it back to the
+                client. <br>
+                (Hint: Use the super-global array <code>$_POST["fname"]</code> to retrieve the value of
+                the input).</li>
+            <li>
+                Edit your <span class="file">index.php</span> file again to perform the following tasks:
+                <ul>
+                    <li>
+                        Display the length of the form input. (Hint: Use <code>strlen</code>.)
+                    </li>
+                    <li>
+                        Display the number of times the letter 'e' appears in the input. (Hint: Use
+                        <code>substr_count</code>.)
+                    </li>
+                    <li>
+                        Display the form input in all upper-case letters. (Hint: Use
+                        <code>strtoupper</code>.)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Now, in <span class="file">form.html</span>, add an additional input
+                <code>&ltinput type="date" name="dob"/></code> which will
+                be used to collect the user's date of birth.
+            </li>
+            <li>
+                Back in your <span class="file">index.php</span> file, use the value of the new date input to perform
+                the following tasks:
+                <ul>
+                    <li>Display the date of birth in year-month-day format.</li>
+                    <li>
+                        Calculate and display the age of the user based on difference in years. <br>
+                        (Hint: Retrieve the
+                        current date using <code> $today = date('Y-m-d'); </code> and calculate the difference using
+                        <code>date_diff(date_create($dob), date_create($today))-> y;</code>)
+                    </li>
+                    <li>
+                        If the user is under the age of 18, output the string: "Sorry, you need to be over the age of 18
+                        to make this purchase".
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <hr>
+
+        <h2 id="advanced">Task 5 - Advanced PHP tasks</h2>
+
+        <p>If you have extra time at the end, try out the following tasks. These are much more challenging, you may need
+            to ask your demonstrator for assistance.</p>
+
+        <ol>
+            <li>
+                Edit your PHP script to output the Fibonacci sequence from 1 up to a number entered by the user via the
+                form (you'll need add an input of type "number" to the form). <br>
+                The Fibonacci sequence sums the previous two numbers to get the next number in the sequence, e.g: 1, 1,
+                2, 3, 5, 8, 13, 21, 34, ...
+            </li>
+            <li>
+                Add four required number inputs to the form. <br>
+                Edit your PHP script to display the second-largest number
+                entered. <br>
+                (Hint: You may need <code>array</code> and <code>sort</code>.)
+            </li>
+            <li>Edit your PHP script to operate as a simple calculator. <br>
+                Take two number inputs from the form, and
+                use the value of the form's text input to determine which operation to perform ('+' for addition, '-'
+                for subtraction, '*' for multiplication, and '/' for division). <br>
+                Display the result.</li>
+            <li>
+                Edit your PHP script to take a text input as a string. <br>
+                Display the string with reversed case (e.g., 'Hi There'
+                should be output as 'hI tHERE'). <br>
+                (Hint: You may need <code>ctype_lower</code>, <code>strtolower</code>, and <code>strtoupper</code>.)
+            </li>
+            <li>
+                Edit your PHP script to take the four number inputs from Step 2. <br>
+                Output these numbers in ascending order.
+            </li>
+            <li>
+                Edit your PHP to take two text inputs from the form. <br>
+                Output the longest common ending between both
+                inputs (e.g., given the two strings "action" and "addition", the longest common ending would be
+                "tion").
+            </li>
+        </ol>
+
+</body>
+
+</html>

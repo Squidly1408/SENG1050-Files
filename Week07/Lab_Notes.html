@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SENG1050 - Laboratory 7</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="body">
+
+        <h1>SENG1050<br>Lab 7</h1>
+
+        <p>
+            In this lab, you will gain experience in using PHP to write templates and handle XML data.
+        </p>
+
+        <hr>
+
+        <div class="toc"><a href="#templates">Task 1*</a> - <a href="#xml">Task
+                2*</a> -
+            <a href="#writing">Task 3</a>
+        </div>
+
+        <hr>
+
+        <h2 id="templates">Task 1 - Simple PHP Template</h2>
+
+        <p>
+            In this task, you are going to create your own PHP template, and apply it to your website.
+        </p>
+
+        <ol>
+            <li>
+                Follow the steps in Lab 6 to start Apache using the XAMPP Control Panel.
+            </li>
+            <li>
+                Navigate to the virtual host you created in Lab 6, i.e., the <code>seng1050</code> directory. <br>
+                Create a new directory called <code>theme</code>. <br>
+                Within the <code>theme</code> directory, create a new file called <code>template.php</code> and copy the
+                following
+                code into it:
+                <pre><code>
+&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;meta charset="utf-8">
+        &lt;title>&lt;?php echo $title; ?>&lt;/title>
+        &lt;link rel="stylesheet" type="text/css" href="&lt;?php echo $themefolder ?>/style.css" >
+    &lt;/head>
+    &lt;body>
+        &lt;?php echo $content; ?>
+    &lt;/body>
+&lt;/html>
+        </code></pre>
+            </li>
+            <li>
+                Within the same <code>theme</code> directory, create a new file called <code>style.css</code> and copy
+                the
+                following
+                code into it:
+                <pre><code>
+body {color: orange}
+h1 {color: black}
+h2 {color: blue}
+h3 {color: red}
+h4 {color: purple}
+        </code></pre>
+            </li>
+            <li>
+                Return to the <code>seng1050</code> directory, create a new file called <code>index.php</code> (or open
+                an existing one) and copy the
+                following
+                code into it:
+                <pre><code>
+&lt;?php
+    $title = 'First PHP Webpage';
+    $datafolder = 'data';
+    $themefolder = 'theme';
+    $content = '
+    &lt;h1>First PHP Webpage&lt;/h1>
+    &lt;h2>h2 Heading Here&lt;/h2>
+    &lt;h3>h3 Heading Here&lt;/h3>
+    &lt;h4>h4 Heading Here&lt;/h4>
+    &lt;p>SENG1050 just rocks!&lt;/p>
+    ';
+?>
+
+&lt;?php include($themefolder . '/template.php'); ?>
+        </code></pre>
+                If you are working with an existing <code>index.php</code> file, remove all the existing code and keep
+                it elsewhere for future reference.
+            </li>
+            <li>
+                Open your browser and type <code>http://seng1050.com</code> in the URL bar.<br>
+                You will now see your first webpage which is created using a PHP template.
+            </li>
+            <li>
+                Right click on the page and select 'View Page Source', copy the code into the <a
+                    href="https://validator.w3.org/" target="_blank">HTML validator</a> and see if the code is
+                valid.<br>
+                If you find any problems in the validator, you should fix them.
+            </li>
+        </ol>
+
+        <hr>
+
+        <div id="Milestone">
+            <h2 style="color: red">Assessment 3 Milestone 1 (Important!)</h2>
+            <p>Once you have completed Task 1 above, you are able to complete milestone 1 of Assessment 3.
+                Please
+                refer to the Assessment 3 documentation and follow the steps listed carefully. </p>
+            <p>Upon completion of milestone 1, approach your lab instructor to claim 1% of your Assessment 3 score.
+                Once
+                you have been marked off for the milestone, continue the tasks below.</p>
+
+            <hr>
+
+            <h2 id="xml">Task 2 - Reading from an XML File</h2>
+
+            <p>
+                In this task, you are going to create a PHP template which allows reading of XML data into our webpages.
+            </p>
+
+            <ol>
+                <li>
+                    Navigate to the virtual host you created in Lab 6, i.e., the <code>seng1050</code> directory. <br>
+                    Create a new directory called <code>data</code>. <br>
+                    In the <code>data</code> directory, create two new directories called <code>images</code> and
+                    <code>xml</code>.
+                </li>
+                <li>
+                    Download the <code>airports.xml</code> file from Canvas (in the Week 8 module) and place it in the
+                    <code>xml</code> directory.
+                </li>
+                <li>
+                    Download an any image you like that is related to an airport. <br>
+                    Rename it as <code>airport</code> while keeping the extension and place it in the
+                    <code>images</code> directory.
+                </li>
+                <li>
+                    Within the <code>theme</code> directory, create a new file called <code>xml-template.php</code> and
+                    copy the following code into it:
+                    <pre><code>
+&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;meta charset="utf-8">
+        &lt;title>&lt;?php echo $title; ?>&lt;/title>
+        &lt;link rel="stylesheet" type="text/css" href="&lt;?php echo $themefolder ?>/style.css" >
+    &lt;/head>
+    &lt;body>
+        &lt;?php
+            $xmlpath = $datafolder . "/xml/" . $_GET["name"] . ".xml";
+            $root = simplexml_load_file($xmlpath);
+            echo "&lt;h1>" . $root->getName() . "&lt;/h1>";
+            foreach ($root->children() as $children) {
+                if ($children['code']) {
+                    echo "&lt;p>Airport Code: " . $children['code']. "&lt;/p>";
+                }
+                echo "&lt;p>Airport Name: " . $children->xpath("name")[0] . "&lt;/p>";
+            }
+        ?>
+    &lt;/body>
+&lt;/html>
+        </code></pre>
+                </li>
+                <li>
+                    Return to the <code>seng1050</code> directory, create a new file called <code>xmltest.php</code> and
+                    copy the
+                    following
+                    code into it:
+                    <pre><code>
+&lt;?php
+    $title = 'First PHP Webpage';
+    $datafolder = 'data';
+    $themefolder = 'theme';
+    $content = '';
+?>
+
+&lt;?php include($themefolder . '/xml-template.php'); ?>
+        </code></pre>
+                    </li>
+                    <li>
+                        Open your browser and type
+                        <code>http://seng1050.com/xmltest.php?name=airports</code> in the URL bar. <br>
+                        Now, you are able to view the contents of <code>airports.xml</code> according to what is defined by
+                        <code>xml-template.php</code>. <br>
+                        Before moving to the next step, try to think of the following:
+                        <ul>
+                            <li>
+                                In the URL, why do we access <code>xmltest.php</code>? Why do we set the value of the attribute <code>name</code> to <code>airports</code>?
+                            </li>
+                            <li>
+                                Why did we see the name of the root tag when the function 'getName()' is called?
+                            </li>
+                            <li>
+                                How <code>xml-template.php</code> defines the webpage output?
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Edit your <code>xml-template.php</code> file again to retrieve the following information from
+                        <code>airports.xml</code>
+                        <i>(Hint: Refer to slides 29-32, 42-46, and 48 of Lecture 7)</i>:
+                        <ul>
+                            <li>
+                                The description of each airport should be displayed.
+                            </li>
+                            <li>
+                                If a URL element exists and is not blank, this should be inserted into the <code>href</code>                                attribute
+                                of an <code>&lt;a></code> tag on the page.
+                            </li>
+                            <li>
+                                If an image element exists and is not blank, this should be inserted into the <code>src</code>
+                                attribute of an <code>&lt;img></code> tag on the page.
+                            </li>
+                        </ul>
+                    </li>
+            </ol>
+
+            <hr>
+
+            <h2 id="writing">Task 3 - Writing to an XML file</h2>
+            <p>If you have extra time at the end, try out the following tasks (useful for the bonus task of
+                Assessment
+                3):</p>
+            <ol>
+                <li>
+                    Modify <code>index.php</code> in the <code>seng1050</code> directory to create a new webpage containing a form with fields for 'name', 'description', and 'url'. <br>
+                    Note that
+                    these fields correspond to the XML elements in <code>airports.xml</code>. <br>
+                    Have this form submit as a POST
+                    request to a PHP script called <code>submit.php</code> that is in your <code>seng1050</code> directory.
+                </li>
+                <li>
+                    Create the PHP script called <code>submit.php</code> in your <code>seng1050</code> directory. <br>
+                    Write the script so that it receives the values of the 'name', 'description', and 'url' fields from the form using POST. <br>
+                    After reading, it will check that the values for 'name', 'description' and 'url' are not
+                    empty,
+                    and add them to the file <code>airports.xml</code> as a new <code>airport</code> element <i>(Hint: Refer to slide 52
+                        of
+                        Lecture 7)</i>.</li>
+            </ol>
+
+            <hr>
+</body>
+
+</html>

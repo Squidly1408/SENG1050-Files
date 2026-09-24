@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Fun with JavaScript</title>
+        <meta charset="utf-8">
+        <style>
+		h1 { color: red; }
+		#graduation input { float: left; }
+        </style>
+
+        <script type="text/javascript">
+            function checkNameYear() {
+                            var name_field = document.easyform.name;
+                            if (name_field.value == '') {
+                                            alert('please enter your name');
+                                            return false;
+                                        }
+                            return true;
+                        } // checkNameYear()
+        </script>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <div id="container">
+            <h1>Validation practice</h1>
+            <form name="easyform" method="post" onsubmit="return checkNameYear()">
+                <label for="name">Please enter your name</label>
+                <input type="text" name="name" id="name">
+                <br><br>
+
+                <label for="birthyear">Please enter your birth year</label>
+                <input type="text" name="birthyear" id="birthyear" size="4">
+                <br><br>
+
+                <fieldset>
+                    <legend>Going to be a ghost for halloween?</legend>
+                    <input type="checkbox" name="ghost" value="yes" id="yes">
+                    <label for="yes">Yes</label>
+
+                    <input type="checkbox" name="ghost" value="no" id="no">
+                    <label for="no">No</label>
+
+                    <input type="checkbox" name="ghost" value="Secret" id="secret">
+                    <label for="secret">It's a secret</label>
+                </fieldset><br>
+
+                <fieldset>
+                    <legend>Which of the following sports do you prefer?</legend>
+                    <input type="radio" name="sport" value="football" id="football">
+                    <label for="football">Football</label><br>
+
+                    <input type="radio" name="sport" value="soccer" id="soccer">
+                    <label for="soccer">Soccer</label><br>
+
+                    <input type="radio" name="sport" value="cricket" id="cricket">
+                    <label for="cricket">Cricket</label><br>
+
+                    <input type="radio" name="sport" value="athletics" id="athletics">
+                    <label for="athletics">Athletics</label>
+                </fieldset><br>
+
+                Your favorite cartoon character:
+                <select name="cartoon">
+                    <option>select one</option>
+                    <option>Bugs Bunny</option>
+                    <option>Mickey Mouse</option>
+                    <option>Homer Simpson</option>
+                    <option>Bluey</option>
+                </select>
+                <br><br>
+
+                <input type="submit" value="Submit">
+                <input type="reset">
+            </form>
+        </div>
+    </body>
+</html>

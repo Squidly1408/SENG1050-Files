@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SENG1050 - Laboratory 4 </title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+  <div id="body">
+
+    <h1>SENG1050<br>Lab 4</h1>
+
+    <p>
+      In this lab, you will gain experience in different forms of CSS.
+    </p>
+
+    <hr>
+
+    <div class="toc">
+      <a href="#fonts">Task 1*</a> -
+      <a href="#css">Task 2*</a> -
+      <a href="#morecss">Task 3*</a> -
+      <a href="#selector">Task 4*</a> -
+      <a href="#cascade">Task 5*</a>
+    </div>
+
+    <hr>
+
+    <h2 id="fonts">Task 1 - Inline Style</h2>
+
+    <p>
+      Download this HTML file and open it in your editor.<br>
+      For each list item below, set the font properties using inline CSS (the style attribute) so that the font
+      reflects the text.
+      You don't need to try every value for different properties. Try a few
+      you like/want.<br> Once you've finished the task, open the file in two different browsers and compare the results
+      side-by-side. What looks the same? What is different?
+    </p>
+
+    <h2 id="Style">Font Style</h2>
+    <ul>
+      <li>
+        <p>This text should be normal</p>
+      </li>
+      <li>
+        <p>This text should be italic</p>
+      </li>
+      <li>
+        <p>This text should be oblique</p>
+      </li>
+    </ul>
+
+    <h2 id="Weight">Font Weight</h2>
+    <ul>
+      <li>
+        <p>This text should be normal</p>
+      </li>
+      <li>
+        <p>This text should be bold</p>
+      </li>
+      <li>
+        <p>This text should use 100 weight</p>
+      </li>
+      <li>
+        <p>This text should use 400 weight</p>
+      </li>
+      <li>
+        <p>This text should use 600 weight</p>
+      </li>
+      <li>
+        <p>This text should use 900 weight</p>
+      </li>
+      <li>
+        <p>This text should use lighter weight</p>
+      </li>
+      <li>
+        <p>This text should use bolder weight</p>
+      </li>
+    </ul>
+
+    <h2 id="Variant">Font Variant</h2>
+    <ul>
+      <li>
+        <p>This text should be normal</p>
+      </li>
+      <li>
+        <p>This text should be in small-caps</p>
+      </li>
+    </ul>
+
+    <h2 id="Family">Font Family</h2>
+    <ul>
+      <li>
+        <p>This text should be in serif</p>
+      </li>
+      <li>
+        <p>This text should be appear sans-serif</p>
+      </li>
+      <li>
+        <p>This text should be in monospace</p>
+      </li>
+      <li>
+        <p>This text should be in cursive</p>
+      </li>
+      <li>
+        <p>This text should be in fantasy font</p>
+      </li>
+    </ul>
+
+    <h2 id="ASize">Absolute Font Size</h2>
+    <ul>
+      <li>
+        <p>This text should be exactly 0.5cm</p>
+      </li>
+      <li>
+        <p>This text should be exactly 24px. Note that px is relative to
+          screen resolution, so this may look different on different size
+          screens, such as mobile devices.</p>
+      </li>
+      <li>
+        <p>This text should be exactly 2pc</p>
+      </li>
+    </ul>
+
+    <h2 id="RSize">Relative Font Size</h2>
+    <div style="font-size:30px;">
+      <ul>
+        <li>
+          <p>This text is the reference size for this section. Do not modify
+            this text.</p>
+        </li>
+        <li>
+          <p>This text should be smaller than the reference</p>
+        </li>
+        <li>
+          <p>This text should be larger than the reference</p>
+        </li>
+        <li>
+          <p>This text should be xx-small</p>
+        </li>
+        <li>
+          <p>This text should be x-small</p>
+        </li>
+        <li>
+          <p>This text should be small</p>
+        </li>
+        <li>
+          <p>This text should be medium</p>
+        </li>
+        <li>
+          <p>This text should be large</p>
+        </li>
+        <li>
+          <p>This text should be x-large</p>
+        </li>
+        <li>
+          <p>This text should be xx-large</p>
+        </li>
+        <li>
+          <p>This text should be 50% of the reference size</p>
+        </li>
+        <li>
+          <p>This text should be 100% of the reference size</p>
+        </li>
+        <li>
+          <p>This text should be 300% of the reference size</p>
+        </li>
+
+        <li>
+          <p>This text should be exactly 1.5em. The 'em' unit acts as a
+            multiplier on the current font size, so 2em translates as: "2
+            times the size of the current font i.e. 200%. The 'em' unit tends
+            to be more common than '%'."</p>
+        </li>
+      </ul>
+    </div>
+
+
+    <hr>
+
+
+    <h2 id="css">Task 2 - Embedded Document-Level Style Sheet</h2>
+
+    <p>
+      Open the page you created in Lab 2 (My Favourite Things -
+      <code>index2.html</code>). If you can't find it, or didn't save it, you can use the provided
+      <code>index2.html</code> on Canvas.
+      Now that your web page has structure, you can add visual formatting
+      suggestions using CSS.
+    </p>
+
+    <ol>
+      <li>In the content of the <code>&lt;head&gt;</code> tag, place a CSS
+        <code>&lt;style&gt;</code> tag:
+        <pre><code>&lt;style type="text/css"&gt;
+&lt;/style&gt;</code></pre>
+      </li>
+      <li>Inside this <code>&lt;style&gt;</code> tag, add selectors for
+        body and address tags:
+        <pre><code>  body { }
+  address { }</code></pre>
+      </li>
+      <li>Inside the braces (<code>{ }</code>) add some property-value pairs.
+        For example, to make most text purple on a light blue background and
+        aligned to the
+        left of the page use
+        <code>body { color: purple; background-color: lightblue; text-align: left }</code>.
+      </li>
+      <li>To make text inside the address block forest green and aligned to the
+        right of the page, use <code>address { color: forestgreen; text-align: right }.</code>
+      </li>
+      <li>Reload the web page into your web browser to see the changes in
+        visual formatting.</li>
+      <li>Add more style rules to change the formatting of level-1 and level-2
+        headings.</li>
+      <li>Add <em>pseudo-class</em> selectors for the email you have in
+        <code>&lt;address&gt;</code> block.
+        You should define pseudo-classes so that your email address appears
+        differently when it is <em>unvisited</em>, <em>visited</em>,
+        <em>hovered</em> and <em>selected</em> .
+      </li>
+    </ol>
+
+    <p>
+      The page could look something like this.
+    </p>
+
+    <div class="img">
+      <img src="task2-screenshot.png" alt="XHTML file with visual formatting">
+    </div>
+
+    <p>
+      As with HTML, you should
+      use a web validation service to check your CSS code.
+      You can find a CSS validator
+      <a href="http://jigsaw.w3.org/css-validator/" target="_blank">here</a>.
+      You can use the "validate by direct input" form
+      and paste in the content of your <code>&lt;style&gt;</code> tag
+      to be validated (not the style tag itself, just the contents).
+    </p>
+
+    <hr>
+
+    <h2 id="morecss">Task 3 - External Style Sheet</h2>
+
+    <p> External sheets are ideal for maintaining formatting
+      consistency over many pages on a site.
+      This task wants you to experiment with as many different
+      styles as you can. See if you can implement the following styles,
+      and watch their effect in the browser.
+    </p>
+
+    <ol>
+      <li>Create an external style sheet and link it in the HTML file using the <code>link</code> tag. The following
+        tasks should be completed using the external style sheet.</li>
+      <li>Change the margin of the web page to 0px. Change it to 50px.</li>
+      <li>Change the type of bullets used for lists. Better yet, change the
+        bullet to an image.</li>
+      <li>Add styles to insert a border around the image. Modify
+        <code>margin</code>, <code>padding</code>, <code>border-width</code>,
+        <code>border-style</code> and <code>border-color</code> properties.
+      </li>
+      <li>Make all level-1 headings centre-aligned.</li>
+      <li>Insert a background image and repeat it throughout the page.</li>
+      <li>Set a background color (highlighting) behind all paragraphs. Try to
+        set colour using both <code>rgb</code> and <code>hexadecimal</code>
+        schemes.</li>
+      <li>Now use the same external style sheet to format both favourite pages
+        you created in Lab 2 (<code>favourite01.html</code> and
+        <code>favourite02.html</code>). Change some properties in your
+        external style sheet and see how it is reflected in both favourite
+        pages.
+    </ol>
+    <hr>
+
+    <h2 id="selector">Task 4 - Formatting with CSS Selectors</h2>
+
+    <p>
+      Open the copy page you created in Lab 2 (My Favourite Things -
+      <code>index2.html</code>).
+      Now you will add visual formatting to this page using CSS selectors and
+      watch their effect in the browser.
+    </p>
+
+    <ol>
+      <li>In the content of the <code>&lt;head&gt;</code> tag, place a
+        <code>&lt;style&gt;</code> tag as you have done in <a href="#css">Task
+          2</a>.
+      </li>
+      <li>Inside the <code>&lt;style&gt;</code> tag, add the following
+        selectors:
+        <ul>
+          <li>One <em>ID</em> selector with <code>background-color</code>
+            property. And use the <code>id</code> attribute in the target
+            paragraph to receive the formatting.</li>
+          <li>One <em>class</em> selector with <code>color</code> property.
+            And use that <em>class</em> name to format different tags in your
+            <code>index2.html</code> file. For example one <em>paragraph</em>
+            and one <em>list</em>.
+          <li>Try to test one of the <em>descendant</em> and/or
+            <em>sibling</em> selectors (Optional).
+        </ul>
+      </li>
+    </ol>
+    <hr>
+    <h2 id="cascade">Task 5 - Cascading Multiple Style Declaration</h2>
+
+    <p>
+      In this task, you see how the styling rules defined at different levels
+      are cascaded in CSS.
+      Open the file you created in <a href="#morecss">Task 3</a> using
+      external style sheet.
+    </p>
+
+    <ol>
+      <li>Insert a few document-level styles (inside the <code>head</code>
+        element) to override the same styles defined in external style sheet
+        with different values.
+        For example define a different style for the bullets to override the
+        style defined in the external style sheet.</li>
+      <li>Check how the document-level styles override the external styles. If you swap the order of the
+        <code>style</code> and <code>link</code> tags in the <code>head</code> element, notice how the cascade changes.
+        Why does this occur?
+      </li>
+      <li>Now override the document-level styles you added in Step 1 using
+        inline style declaration.
+      </li>
+      <li>Check how inline styles override the document-level styles.</li>
+    </ol>
+
+    <hr>
+
+  </div>
+
+</body>
+
+</html>

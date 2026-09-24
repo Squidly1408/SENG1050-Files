@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>SENG1050 - Laboratory 10</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style type="text/css">
+		kbd,
+		samp,
+		code,
+		span.file {
+			color: blue
+		}
+
+		ul {
+			list-style-type: none
+		}
+
+		td {
+			padding: 5px;
+			text-align: center
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<div id="body">
+
+		<h1>SENG1050<br>Lab 10</h1>
+
+		<p>
+			In this lab, you will gain experience in encoding and compression through examples in Huffman encoding, CRC, and GZIP compression.
+		</p>
+
+		<hr />
+
+		<div class="toc">
+			<a href="#enc">Task 1*</a> -
+			<a href="#crc">Task 2*</a> -
+			<a href="#gzip">Task 3</a>
+		</div>
+
+		<hr>
+
+		<div id="Milestone">
+			<h2 style="color: red">Assessment 3 (Important!)</h2>
+			<p>
+				Work on Assessment 3 (Web-Based Assignment 2) and get your milestones graded by this week.
+			</p>
+		</div>
+
+		<hr>
+
+		<h2 id="enc">Task 1 - Huffman Encoding (100% in Exams)</h2>
+
+		<ul>
+			<li>
+				As you have seen in the lecture, Huffman Encoding is a simple statistical compression technique. To
+				construct a Huffman code:
+
+				<ol>
+					<li>Rank all symbols by frequency of occurrence.</li>
+					<li>Repeatedly combine the two symbols of the lowest probability to form a new composite symbol.
+					</li>
+					<li>Then, build a binary tree where each node is labelled with the frequency of all nodes beneath
+						it. Also, build the "trail" to each leaf - left is 0 right is 1.
+					</li>
+					<li>Build the encoding table by following the trail for each letter. This trail is the Huffman Code
+						for each letter.</li>
+				</ol>
+				<br>
+			</li>
+			<li>
+				For example, consider the following text:
+				<ul>
+					<li><kbd>the three men were meant</kbd></li>
+					<li>
+						<ol>
+							<li>The symbols in order of frequency:
+								<table border="1">
+									<tr>
+										<td>e</td>
+										<td>t</td>
+										<td>h</td>
+										<td>r</td>
+										<td>m</td>
+										<td>n</td>
+										<td>w</td>
+										<td>a</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>3</td>
+										<td>2</td>
+										<td>2</td>
+										<td>2</td>
+										<td>2</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+								</table>
+							</li>
+							<li>Now, repeatedly add the two smallest frequencies together. This combination is done
+								from the leftmost to the rightmost column as follows:
+								<table border="1">
+									<tr>
+										<td>e (7)</td>
+										<td>e (7)</td>
+										<td>e (7)</td>
+										<td>e (7)</td>
+										<td>e (7)</td>
+										<td>e (7)</td>
+										<td>{e{th}} (12)</td>
+										<td>{{e{th}}{{rm}{n{wa}}}} (20)</td>
+									</tr>
+									<tr>
+										<td>t (3)</td>
+										<td>t (3)</td>
+										<td>t (3)</td>
+										<td>t (3)</td>
+										<td>{th} (5)</td>
+										<td>{th} (5)</td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>h (2)</td>
+										<td>h (2)</td>
+										<td>h (2)</td>
+										<td>h (2)</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>r (2)</td>
+										<td>r (2)</td>
+										<td>r (2)</td>
+										<td>{rm} (4)</td>
+										<td>{rm} (4)</td>
+										<td>{{rm}{n{wa}}} (8)</td>
+										<td>{{rm}{n{wa}}} (8)</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>m (2)</td>
+										<td>m (2)</td>
+										<td>m (2)</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>n (2)</td>
+										<td>n (2)</td>
+										<td>{n{wa}} (4)</td>
+										<td>{n{wa}} (4)</td>
+										<td>{n{wa}} (4)</td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>w (1)</td>
+										<td>{wa} (2)</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>a (1)</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</li>
+							<li>Draw a binary tree from this table. It should look as follows: <br>
+								<img src="task-01-tree-01.png" alt="binary-tree-01" width="288" height="228" />
+							</li>
+							<li>
+								Building a table from this encoding tree gives the Huffman Encoding
+								<table border="1">
+									<tr>
+										<td>e</td>
+										<td>t</td>
+										<td>h</td>
+										<td>r</td>
+										<td>m</td>
+										<td>n</td>
+										<td>w</td>
+										<td>a</td>
+									</tr>
+									<tr>
+										<td>00</td>
+										<td>010</td>
+										<td>011</td>
+										<td>100</td>
+										<td>101</td>
+										<td>110</td>
+										<td>1110</td>
+										<td>1111</td>
+									</tr>
+								</table>
+							</li>
+							<li>At the end, the string would be encoded as:
+								<kbd>0100110001001110000001010011011100010000101001111110010</kbd>.
+								<br>Ask your demonstrator for help if you have any problems.
+							</li>
+						</ol>
+						<br>
+					</li>
+				</ul>
+			</li>
+
+			<li>As further practice, use Huffman Encoding to compress the phrase
+				<kbd>antelopeavoidanteaters</kbd>.<br>
+			</li>
+
+			<li>Assuming that it normally takes 8 bits to store a single ASCII character, how much has the message
+				been compressed by the encoding? Calculate this compression rate as the proportion reduced using
+				the formula: 1 - (compressed_size / original_size).</li>
+		</ul>
+
+		<hr>
+
+		<h2 id="crc">Task 2 - CRC Calculation (100% in Exams)</h2>
+
+		<p>
+			To calculate the CRC of a message, we use the binary co-efficients of a generator polynomial as the divisor for the message we need to send.
+		</p>
+
+		<ol>
+			<li>For example, given a message: <kbd>10011000</kbd>, we want to calculate the CRC using the
+				generator polynomial <kbd>x<sup>3</sup>+x+1</kbd> which can also be written as
+				<kbd>1x<sup>3</sup>+0x<sup>2</sup>+1x<sup>1</sup>+1x<sup>0</sup></kbd>.
+				Taking the co-efficients of the polynomial gives us <kbd>1011</kbd>.
+			</li>
+			<li>The CRC will always be the length of the highest power of x in the generator polynomial with a
+				non-zero co-efficient.
+				In this case, the highest power of x is 3, and so the CRC will be of length 3.
+			</li>
+			<li>We need to add trailing zeros to the end of the message that equals to the length of the CRC,
+				resulting in <kbd>10011000`000</kbd>, and perform the division. </li>
+			<li>To perform the division, we will shift the generator co-efficients along the message until the
+				left-most ones are lined up, then perform bitwise XOR.
+				Continue this until all of the message bits are set to zero as follows:
+				<pre><code>
+10011000`000
+1011
+00101000`000
+  1011
+00000100`000
+     101 1
+00000001`100
+       1 011
+00000000`111</code></pre>
+			</li>
+			<li>At the end of the process, the bits in the remainder become the CRC, which we will append to the
+				message to be sent.
+				In this example, the transmitted message would be <kbd>10011000111</kbd>.</li>
+			<li>The receiver can check the message by using the same generator to perform the division on the
+				received message. The message is valid if the remainder is zero. The working is as follows:
+				<pre><code>
+10011000`111
+1011
+00101000`111
+  1011
+00000100`111
+     101 1
+00000001`011
+       1 011
+00000000`000</code></pre>
+			</li>
+		</ol>
+		<p>As further practice, calculate the CRC for the message <kbd>1010101101101001</kbd> using the generator
+			<kbd>011011</kbd>.
+			Verify your answer at the end.
+		</p>
+
+		<hr>
+
+		<h2 id="gzip">Task 3 - GZIP Compression (Optional - Not in Exams)</h2>
+		<p>GZIP compression is a form of substitutional compression that uses a window to keep track of the current
+			output.
+			(We are specifically using only the LZ77 algorithm component for this course).
+			To perform GZIP compression:</p>
+		<ol>
+			<li>Perform a look-ahead in the input to find the longest pattern that exists in the window.</li>
+			<li>If there is a match, output the optimal offset-length instruction and add the result to the window.</li>
+			<li>Otherwise, output the first character and add it to the window.
+				Repeat until reaching the end of the input.</li>
+		</ol>
+		<p>For example, consider the string <kbd>ABBABAABABAB</kbd>.</p>
+
+		<table style="border-style: collapse;">
+			<thead>
+				<tr>
+					<th style="border: 1px solid black;">INPUT</th>
+					<th style="border: 1px solid black;">OUTPUT</th>
+					<th style="border: 1px solid black;">WINDOW</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>A</td>
+					<td>A</td>
+					<td>A</td>
+				</tr>
+				<tr>
+					<td>B</td>
+					<td>B</td>
+					<td>AB</td>
+				</tr>
+				<tr>
+					<td>B</td>
+					<td>B</td>
+					<td>ABB</td>
+				</tr>
+				<tr>
+					<td>AB</td>
+					<td>(-3,2)</td>
+					<td>ABBAB</td>
+				</tr>
+				<tr>
+					<td>A</td>
+					<td>A</td>
+					<td>ABBABA</td>
+				</tr>
+				<tr>
+					<td>ABA</td>
+					<td>(-3,3)</td>
+					<td>ABBABAABA</td>
+				</tr>
+				<tr>
+					<td>BAB [End of message]</td>
+					<td>(-2,3)</td>
+					<td>ABBABAABABAB</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>The output would be <kbd>ABB(-3,2)A(-3,3)(-2,3)</kbd>.</p>
+		<p>As further practice, use GZIP compression to compress the following string:
+			<kbd>ABCBACABACABCCBABBAAABCCBA</kbd>.
+		</p>
+
+		<hr>
+
+	</div>
+
+</body>
+
+</html>

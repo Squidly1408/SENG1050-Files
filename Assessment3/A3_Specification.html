@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>SENG1050 Assessment 3</title>
+
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+	<style type="text/css">
+		blockquote {
+			font-style: italic
+		}
+
+		.late {
+			font-size: medium
+		}
+
+		.warning {
+			color: #ff0000;
+		}
+
+		#MilestoneOne {
+			background-color: #ffeecc;
+		}
+
+		#MilestoneTwo {
+			background-color: #ffeecc;
+		}
+
+		.JSTask {
+			background-color: #ffea00;
+			margin-bottom: 0.5em;
+		}
+	</style>
+
+</head>
+
+<body style="text-align:justify">
+
+	<div id="body">
+
+		<h1>SENG1050 Assessment 3</h1>
+
+		<p class="sub">
+			Web-Based Assignment 2 (25%)
+		</p>
+
+		<p class="sub">
+			<!-- Edit -->
+			Milestone 1: Checked starting from Week 8 Labs <br>
+			Milestone 2: Checked starting from Week 10 Labs <br>
+			Due Date: 11:59 pm on 24 Oct (Week 12)
+		</p>
+
+		<hr>
+
+		<div class="toc">
+			<a href="#outline">Outline</a> -
+			<a href="#all">General Requirements</a> -
+			<a href="#server">Web Server Setup and Website Import</a> -
+			<a href="#data">Genre Pages</a> -
+			<a href="#form">Data Collection Page</a> <br /> -
+			<a href="#style">Responsive Web Design</a> -
+			<a href="#extra">Form Submission Script</a> -
+			<a href="#coding">Coding Style</a> -
+			<a href="#submit">Submission</a> -
+			<a href="#marking">Marking Guide</a>
+		</div>
+
+		<hr>
+
+		<p>The objectives of this assignment are as follows:
+
+		<ol>
+			<li>To exercise your ability to create web pages using HTML and CSS.</li>
+			<li>To transform the XML documents from Assessment 2 (Web-Based Assignment 1) into HTML using PHP.
+			</li>
+			<li>To test your skill in deploying a website in a self-hosted server environment.</li>
+			<li>To evaluate your expertise with JavaScript for client side processing.</li>
+		</ol>
+
+		</p>
+
+		<hr>
+
+		<h2 id="outline">1. Outline</h2>
+
+		<p>
+			<!-- Edit -->
+			Following the success of the initial website launch, the <em>FeverGamez</em> board have
+			decided
+			to expand the website to faciliate selling second-hand products submitted by
+			customers from all over the world. More precisely, your project is now to extend your website to
+			allow people to complete a form listing their second-hand products with all
+			the details required by <em>FeverGamez</em>. Several website improvements should also be included.
+		</p>
+
+		<p>
+			Your website should still be be simple, friendly and attractive. This can be achieved by
+			satisfying the requirements and completing the tasks in the following sections:
+		</p>
+
+		<ul>
+			<li><a href="#all">Section 2: General Requirements</a></li>
+			<li><a href="#server">Section 3: Web Server Setup and Website Import</a></li>
+			<li><a href="#data">Section 4: Category Pages</a></li>
+			<li><a href="#form">Section 5: Data Collection Page </a></li>
+			<li><a href="#style">Section 6: Responsive Web Design</a></li>
+		</ul>
+
+		<hr>
+
+		<h2 id="all">2. General Requirements</h2>
+
+		<h3 id="ss2.1">2.1 Web Server Requirements</h3>
+
+		<p>
+			Your website must run on an <em>Apache</em> web server which uses <em>PHP</em> to implement the server-side
+			behaviour. This website must be accessible from the URL: <em>http://fevergamez.com</em>.
+		</p>
+
+		<p>
+			Your website must maintain a proper directory. All files must be stored in a directory named
+			<em>fevergamez</em>. For clarity, all images included in the website must be stored in the
+			<em>fevergamez/data/images</em> directory; all xml files included in the website must be stored in the
+			<em>fevergamez/data/xml</em> directory; and all template files included in the website must be stored in the
+			<em>fevergamez/themes</em> directory. You may include additional directories according to your discretion.
+		</p>
+
+		<h3 id="ss2.2">2.2 HTML Requirements</h3>
+
+		<p>
+			All the HTML pages (<strong>generated using PHP</strong>) that form your website should satisfy the
+			following:
+		</p>
+
+		<ul>
+			<li>Coded according to the HTML Living Standard.</li>
+			<li>Contain the full HTML document structure, i.e., include &lt;&#33;DOCTYPE&gt;,
+				&lt;html&gt;, &lt;head&gt;, &lt;meta&gt;, &lt;title&gt; and &lt;body&gt;.</li>
+			<li> There should be complete navigation capabilities across your website, such that:
+				<ul>
+					<li>Each webpage should contain hyperlinks to every other webpage. </li>
+					<li>The hyperlinks are implemented using <em>relative</em> URLs.</li>
+				</ul>
+			</li>
+			<li>The footer of each page should contain a copyright statement including your name,
+				student number, email address, and degree.</li>
+		</ul>
+
+		<h3 id="ss2.3">2.3 CSS Requirements</h3>
+
+		<p>
+			In general, in order to draw your target audience, make sure that your website considers
+			factors such as navigability, content layout, element positioning on screen, text size,
+			colour contrast, readability, consistency, and accessibility. All visual formatting of the Web site will be
+			implemented using Cascading Style Sheets (CSS). You will be using external style file, document-level style
+			sheet, and inline styles in this assignment.
+		</p>
+
+		<p>
+			Create at least one external style file named <span class="file">style.css</span>. This external style file
+			should achieve the following CSS
+			requirements to all your web pages:
+		</p>
+
+		<ul>
+			<li>Left and right side margin of at least <strong>30px</strong> for the main content (body) of all
+				webpages. <strong>Note that this is improved from the previous assignment to cater for responsive
+					design.</strong></li>
+			<li>A nice background for the webpages. The text must be readable with the background.</li>
+			<li>The text colours of a link before they are visited, after they are visited, and during a
+				user action must be different from each other. The link must <strong> be italicized</strong> when you
+				move the cursor over them. <strong>Note that this is improved from the previous assignment to cater for
+					responsive design.</strong></li>
+			<li>Include at least one <em>id</em> and one <em>class</em> selector.</li>
+			<li>Hooked to at least one &lt;div&gt;, used to provide some interesting styling (your choice of
+				borders, background, floating alignment, etc.)</li>
+			<li>Hooked to at least one &lt;span&gt;, used to provide some formatting (e.g., a colour or font
+				change) for a few words of text.</li>
+		</ul>
+
+		<p>
+			You must also include at least one document-level style sheet and at least one inline style to the Homepage
+			(<span class="file">index.php</span>). Note that document-level style sheet is used to apply styles
+			that are unique to the particular page, whereas inline styles should only be used for one-off visual
+			effects.
+		</p>
+
+		<hr>
+
+		<h2 id="server">3. Web Server Setup and Website Import</h2>
+
+		<h3 id="ss3.1">3.1 Web Server Setup</h3>
+
+		<p>
+			This subsection involves setting up the Apache web server with XAMPP. This could
+			be easily achieved by following the steps outlined in Task 2 of Lab 6.
+		</p>
+
+		<h3>3.2 Website Import</h3>
+
+		<p>
+			Upon completing <a href="#ss3.1">subsection 3.1</a>, you will import your website from
+			Assignment 1. This can be achieved through the following steps:
+		</p>
+
+		<ul>
+			<li>
+				Create the <em>fevergamez/data/images</em> directory. Move all images in the website to this directory.
+				Remember to change the image <em>src</em> attributes in your HTML code to point to the new
+				location.</li>
+			<li>
+				Create the <em>fevergamez/data/xml</em> directory. Move all xml files in the website (<span
+					class="file">xmltemplate.xml</span>, <span class="file">xmldata1.xml</span>, and <span
+					class="file">xmldata2.xml</span>) to this directory.
+			</li>
+			<li>
+				Create the <em>fevergamez/theme</em> directory. Copy your external stylesheet <em>style.css</em> into
+				this folder.
+			</li>
+			<li>
+				In the <em>fevergamez/theme</em> directory, create a PHP template file called
+				<span class="file">template.php</span>. In this file, create a template that links to the external
+				stylesheet and data of your HTML pages. <i>[Hint: refer to Lab 7 Task 1.]</i>
+			</li>
+			<li>
+				Convert all HTML pages from the previous assignment (<span class="file">index.html</span>, <span
+					class="file">about.html</span>, and <span class="file">contact.html</span>) into PHP files (<span
+					class="file">index.php</span>, <span class="file">about.php</span>, and <span
+					class="file">contact.php</span>) such that they will be generated using the PHP template (<span
+					class="file">template.php</span>). <i>[Hint: refer to Lab 7 Task 1.]</i>
+			</li>
+
+		</ul>
+
+		<p>
+			It is recommended to double check that your webpages satisfy the requirements in <a href="#ss2.2">subsection
+				2.2</a> and <a href="#ss2.3">subsection 2.3</a>.
+		</p>
+
+		<hr>
+
+		<div id="MilestoneOne">
+
+			<h3>Milestone 1</h3>
+
+			<p>
+				Upon completing <a href="#server">section 3</a>, approach your lab instructor to check
+				your first milestone during the labs between Week 8 and Week 12. The first milestone
+				aims to check that you have completed your setup of the Apache web server and that you have
+				Successfully import your website from Assignment 1.
+			</p>
+
+			<p>
+				The following will be checked:
+			</p>
+
+			<ul>
+				<li>
+					The directory structure of your virtual host should be as specified in <a href="#ss2.1">subsection
+						2.1</a>.
+				</li>
+				<li>
+					The website is accessible from <em>http://fevergamez.com</em>.
+				</li>
+				<li>
+					The default webpage for your website should be your
+					homepage from Assignment 1.</li>
+				<li>All webpages in your website should be loading all linked resources (hyperlinks,
+					images, etc.) correctly.</li>
+				<li>Your external CSS should be correctly linked.</li>
+			</ul>
+
+			<p>
+				Fulfilling the criteria listed above will grant you 1% of your Assessment 3 score.
+			</p>
+
+		</div>
+
+		<hr>
+
+		<h2 id="data">4. Genre Pages</h2>
+
+		<h3>4.1 Renaming XML Data Files</h3>
+
+		<p>
+			<!-- Edit -->
+			Rename your two XML files (<span class="file">xmldata1.xml</span> and <span
+				class="file">xmldata2.xml</span>) in Assignment 1 according to the genre of the product. For
+			example, if <span class="file">xmldata1.xml</span> hosts products of the adveture genre, rename it to
+			<span class="file">adventure.xml</span>.
+		</p>
+
+		<h3>4.2 PHP Template for Reading XML Data</h3>
+
+		<p>
+			You will be writing a separate PHP template named <span class="file">xmltemplate.php</span> which is stored
+			in the <em>fevergamez/theme</em> directory. This template file will dynamically generate HTML pages (via
+			query
+			elements) from your two XML files (renamed <span class="file">xmldata1.xml</span> and <span
+				class="file">xmldata2.xml</span>).
+			The HTML pages that are generated should fit in with the style of the rest of your website
+			(i.e., similar formatting, colors, etc).
+		</p>
+
+		<p>
+			Note that all of your XML files have the same tags and DTD. Thus, you only need to make 1 PHP
+			template (<span class="file">xmltemplate.php</span>) which allows the creation of a HTML page containing:
+		</p>
+
+		<ul>
+			<!-- Edit -->
+			<li>
+				A level 1 heading which mentions the genre.
+			</li>
+			<li>
+				List of all the products in the genre, including
+				information in your XML files such as:
+				<ul>
+					<li>Name</li>
+					<li>Description</li>
+					<li>Pricing</li>
+					<li>Search tags</li>
+					<li>Reviews</li>
+					<li>Any picture(s) of the product</li>
+					<li>URL of a webpage related to the product.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<p>
+			Note that you are allowed to modify your XML files to cater for changes you need. <i>[Hint: refer to Lab 7
+				Task 2.]</i>
+		</p>
+
+		<h3>4.3 PHP File to Access Genre Pages</h3>
+
+		<p>
+			<!-- Edit -->
+			Create a PHP file named <span class="file">genre.php</span> which is stored
+			in the <em>fevergamez</em> directory. This is the "landing" page that will direct visitors to the correct
+			genre pages by reading the name of the XML file from the GET parameters of the URL.
+			As an example, to access the adventure genre HTML page, which is generated from
+			<em>adventure.xml</em>, the URL may be http://fevergamez.com/genre.php?genre=adventure. In this
+			case, the <span class="file">genre.php</span> file is retrieving the query string 'adventure' from the URL.
+			<i>[Hint: refer to Lab 7 Task 2.]</i>
+		</p>
+
+		<p>
+			<!-- Edit -->
+			Next, you need to include and update the navigation links on your website to enable access to these genre
+			pages. Carefully note that all genre pages link
+			to the same <span class="file">genre.php</span> file, with subtle differences governed be the query string
+			<em>?genre=</em> at the end of the URL.
+		</p>
+
+		<p class="JSTask">
+			Finally, in the genre pages, you should add JavaScript which allows you to
+			store the name of the genre page viewed, along with the date and time it was viewed, in a
+			cookie on the user's browser. Also, in the Hompepage (<span class="file">index.php</span>), add JavaScript
+			which reminds a
+			returning user of the product genre they were last viewing, along with the date and time
+			they viewed it, by reading the stored cookie. <i>[Hint: refer to Lab 8 Task 3.]</i>
+		</p>
+
+		<hr>
+
+		<h2 id="form">5. Data Collection Page</h2>
+
+		<p>
+			<!-- Edit -->
+			Creata a Data Collection page named <span class="file">collection.php</span>, where users can
+			list and provide details about their second hand products. This will be
+			done as a form, which sends the information as a POST request to a script
+			<span class="file">submit.php</span> located in the <em>fevergamez</em> directory when they
+			click the "Submit" button. The following things need to be included on the page.
+		</p>
+
+		<ol>
+			<li>An appropriate level 1 heading.</li>
+			<li>Information about the person submitting:
+				<ul>
+					<li> Their first name.</li>
+					<li> Their last name.</li>
+					<li> Their email address.</li>
+					<li> A binary choice question on whether they have submitted a product before. Apply
+						a default response here. </li>
+				</ul>
+			</li>
+			<li>Information about the product - Include <em>all</em> information in your XML template,
+				with the following additional requirements:
+				<ul>
+					<li>
+						Required tags and attributes (elements with no modifiers or the '+' modifier,
+						and attributes with #REQUIRED) should be required fields on your form before it
+						can be submitted. These fields should be visually marked to the user with an
+						asterisk '*'.
+					</li>
+					<li>
+						<!--Edit-->
+						A dropdown box for the user to indicate the genre of the product. The
+						dropdown box should list all existing genre.
+					</li>
+					<li>A checkbox to indicate whether the user has read the terms and conditions. This
+						checkbox should be required before the form can be submitted.</li>
+					<li class="JSTask">
+						There should be buttons to add search tags for each product as
+						per the XML. Each individual item should also have a button to delete it (there
+						is a minimum of one, so the delete button of the last remaining item should be
+						removed). Use JavaScript to implement the behaviour of these buttons. <i>[Hint: refer to Lab 8
+							Task 4.]</i>
+					</li>
+					<li class="JSTask">If any reviews are entered, each review must contain the phrase
+						&quot;x out of 5 stars&quot; (where x must be a number from 0 to 5 allowing a
+						single decimal place, i.e, 0, 1.1, 3, and 4.5 are all valid). Use JavaScript to
+						check this when the submit button is clicked. The form should not submit if this
+						phrase is not present in <strong>each</strong> review, and an error message
+						should be displayed to the user. Remember, there could be zero reviews. <i>[Hint: refer to Lab 8
+							Task 2 and you may use GenAI tools to generate the regex string for check only.]</i>
+					</li>
+				</ul>
+			</li>
+			<li>Buttons to submit and clear the form should be present.</li>
+		</ol>
+
+		<p>
+			Each field should use an appropriate input type that is intuitive to the user and minimizes
+			the chance of an invalid input being entered.
+		</p>
+
+		<hr>
+
+		<div id="MilestoneTwo">
+
+			<h3>Milestone 2</h3>
+
+			<p>As you are progressing through <a href="#data">section 4</a> and <a href="#form">section
+					5</a>, approach your lab instructor to check your second milestone during the labs
+				between Week 10 and Week 12. The second milestone aims to check that you have started
+				working on pulling data from your XML files, and you have a reasonable grasp of the
+				basics of JavaScript.
+			</p>
+
+			<p>
+				The following will be checked:
+			</p>
+
+			<ul>
+				<li>
+					The PHP template file <span class="file">xmltemplate.php</span> that pulls the XML data. This
+					should correctly open the appropriate file and retrieve the data.
+				</li>
+				<li>
+					<!--Edit-->
+					Both of your genre pages. These pages are not required to be neat at
+					this point, but you should be able to display all of the data from each file,
+					including links and images, each in their appropriate elements (e.g., &lt;a> and
+					&lt;img>).
+				</li>
+				<li>A working version of one of the yellow-highlighted JavaScript tasks in section 4 and
+					5. You only need to show one, but it must be fully functional.</li>
+			</ul>
+
+			<p>
+				Fulfilling the criteria listed above will grant you 1% of your Assessment 3 score.
+			</p>
+
+		</div>
+
+		<hr>
+
+		<h2 id="style">6. Responsive Web Design</h2>
+
+		<p>
+			The site staff want the website to be well-designed, and easily accessible for both humans
+			and computers (especially search engines). To that end, the website must look visually
+			appealing across a wide range of devices, and use a consistent style independent of which
+			web browser is used.
+		</p>
+
+		<p>
+			All webpages should use a responsive layout, that grows and shrinks when the screen size
+			changes. The website should also use a different layout for small screens (and specifically
+			mobile devices) and you must achieve this by using media queries in your <span
+				class="file">style.css</span>.
+			You should set the <em>viewport</em> meta tag in your template files to indicate that your
+			webpages are mobile-friendly. <i>[Hint: refer to Lecture 9.]</i>
+		</p>
+
+		<p>
+			In addtion, you must optimise your website. This involves:
+		</p>
+
+		<ul>
+			<li>
+				Optimising images such that overly large files are not unnecessarily loaded for small
+				display sizes. All images should be in a compressed, efficient format such as webp or
+				avif. You can use <a href="https://squoosh.app/" target="_blank">an image compression service</a> to
+				optimise your images. All images must include a descriptive <em>alt</em> attribute that
+				describes the image for screen readers.
+			</li>
+			<li>
+				Minimizing content layout shift by setting explicit widths and heights for images.
+			</li>
+		</ul>
+
+		<hr>
+
+		<h2 id="extra"><span style="color: darkorchid">7. [Bonus Task] Form Submission Script</span></h2>
+
+		<p>
+			You will write a PHP script <span class="file">submit.php</span> to receive and process the data collection
+			form (<span class="file">collection.php</span>) for new
+			products. Data from the form will be written to existing XML files according to the following
+			specifications:
+		</p>
+
+		<ol>
+			<li>
+				<!-- Edit -->
+				Once the script has confirmed that the required genre file exists, the XML file should be opened, and the
+				new product data should be added. The resulting XML file MUST be valid (that is, it
+				must validate).
+			</li>
+			<li>
+				<!-- Edit -->
+				At the end of a valid submission, the user should be redirected to the appropriate
+				genre page showing their new product listed. A form submission success message should be displayed on this page to
+				the user.
+			</li>
+		</ol>
+
+		<p>
+			Successfully completing this task will earn you a 5 mark bonus.
+		</p>
+
+		<hr>
+
+		<h2 id="coding">8. Coding Style</h2>
+
+		<p>
+			All of your work (HTML, XML, CSS, PHP, and Javascript) should be validated and valid (meaning no errors).
+			Use the following for validation:
+		</p>
+
+		<ul>
+			<li>HTML: <a href="https://validator.w3.org/" target="_blank">https://validator.w3.org</a></li>
+			<li>XML: <a href="https://www.xmlvalidation.com/" target="_blank">https://www.xmlvalidation.com/</a></li>
+			<li>CSS: <a href="http://jigsaw.w3.org/css-validator/"
+					target="_blank">http://jigsaw.w3.org/css-validator/</a></li>
+			<li>PHP: <a href="https://phpcodechecker.com/" target="_blank">https://phpcodechecker.com/</a></li>
+			<li>JavaScript: <a href="https://beautifytools.com/javascript-validator.php"
+					target="_blank">https://beautifytools.com/javascript-validator.php</a></li>
+		</ul>
+
+		<p>
+			Your HTML, XML, CSS, PHP, and JavaScript codes must be neat, clear, and indented. For all code
+			files, you must include comments at the top of the
+			file, stating the name of the file, the name of the author and the date the file was created. You must also
+			at least include comments in your code files which addresses the marking critera.
+		</p>
+
+		<p>
+			You must also include a README file named <span class="file">README.txt</span> which includes all of your
+			references.
+		</p>
+
+		<hr>
+
+		<h2 id="submit">9. Submission</h2>
+
+		<p>
+			Submission will be done via <a href="https://canvas.newcastle.edu.au" target="_blank">Canvas</a>.
+			To submit your files, place the <em>fevergamez</em> directory into a <span
+				class="file"><strong>.zip</strong></span> archive. The <span class="file">.zip</span> archive should be
+			named <span class="file">A3_cXXXXXXX.zip</span> archive where <span class="file">XXXXXXX</span> is replaced
+			by
+			<strong>your</strong> student id. Make sure your <em>fevergamez</em> directory contains the following:
+
+		<ul>
+			<li>Homepage (<span class="file">index.php</span>)</li>
+			<li>About Us page (<span class="file">about.php</span>)</li>
+			<li>Contact page (<span class="file">contact.php</span>)</li>
+			<li>Genre 'landing' page (<span class="file">genre.php</span>)</li>
+			<li>Data Collection page (<span class="file">collection.php</span>)</li>
+			<li>XML template with DTD (<span class="file">xmltemplate.xml</span> stored in the
+				<em>fevergamez/data/xml</em> directory)
+			</li>
+			<li>XML data file 1 with DTD (renamed <span class="file">xmldata1.xml</span> stored in the
+				<em>fevergamez/data/xml</em> directory)
+			</li>
+			<li>XML data file 2 with DTD (renamed <span class="file">xmldata2.xml</span> stored in the
+				<em>fevergamez/data/xml</em> directory)
+			</li>
+			<li>CSS style file (<span class="file">style.css</span> stored in the <em>fevergamez/theme</em> directory)
+			</li>
+			<li>PHP template file for HTML file creation (<span class="file">template.php</span> stored in the
+				<em>fevergamez/theme</em> directory)
+			</li>
+			<li>PHP template file for reading XML data (<span class="file">xmltemplate.php</span> stored in the
+				<em>fevergamez/theme</em> directory)
+			</li>
+			<li>Form submission script (<span class="file">submit.php</span>)
+			</li>
+			<li>All images used for the website (stored in the <em>fevergamez/data/images</em> directory)</li>
+			<li>README file (<span class="file">README.txt</span>)</li>
+		</ul>
+
+		</p>
+
+		<p>
+			Note that failure to follow submission instructions will incur a penalty. Assignments
+			submitted after the deadline will also be penalized by 10% per day late
+			(including weekend). For example, an assignment worth 20% marked at 78% may be graded
+			as:
+		</p>
+
+		<ul>
+			<li>
+				On time: final mark = 0.78 * 1.00 * 20 = 15.6
+			</li>
+			<li>
+				1 day late: final mark = 0.78 * .9 * 20 = 14.04
+			</li>
+			<li>
+				3 days late: final mark = 0.78 * .7 * 20 = 10.92
+			</li>
+			<li>
+				5 days late: final mark = 0.78 * .5 * 20 = 7.8
+			</li>
+		</ul>
+
+		<p>
+			Extensions will only be granted with a valid and approved Adverse Circumstances
+			application for the assignment. Adverse Circumstances application should also be
+			submitted at least a day before the due.
+		</p>
+
+		<div class="warning">
+
+			<h3 id="generated">Warning - Code Generation Tools</h3>
+
+			<p>
+				You are <strong>NOT</strong> allowed to use tools which
+				<em>generate</em> HTML, XML, CSS, PHP, or JavaScript code, either from a visual
+				representation or
+				otherwise. This includes
+				DreamWeaver, Microsoft Frontpage, GenAI tools (e.g., ChatGPT), saving to HTML from
+				MS Word, etc. You
+				must write all code yourself in a
+				<strong><u>plain-text</u></strong> editor, such as
+				Notepad++ or VS Code (with Live Server extension only). Any assignments that use
+				code generated from a tool
+				will be given
+				<strong>ZERO</strong>.
+			</p>
+
+			<h3 id="plagiarism">Warning - Plagiarism</h3>
+
+			<p>
+				Plagiarism is defined as <dfn>presenting the work of others' as
+					if it was your
+					own</dfn>. This includes the copying of content from other
+				people's web pages
+				(and other sources) without "appropriate referencing"
+				(indicating the parts of your
+				assignment which have been copied and where they were copied
+				from).
+			</p>
+
+			<p>
+				If you "quote" or use other people's work (or images) in your
+				assignments, then you
+				<strong>must</strong> reference them appropriately (using a
+				README.txt file). Failure to do so will cause you to lose marks for the
+				assignment. An
+				assignment that consists largely of work copied from elsewhere
+				will receive very low
+				(zero) marks, and may be reported to the school for suspicion of
+				plagiarism.
+			</p>
+
+			<h3 id="genAI">Warning - GenAI Usage</h3>
+
+			<p>
+				The use of GenAI tools (such as ChatGPT) is forbidden for the
+				writing of any code. However, generative AI may be used for
+				purely creative
+				aspects of the website (such as coming up with descriptions,
+				welcome text, and
+				images) or wherever explicitly stated. AI generated content should also be
+				referenced appropriately (using a
+				README.txt file). AI detection
+				tools will check
+				each file, and any content with a sufficiently high detection
+				score will be reported
+				to the School for suspicion of plagiarism.
+			</p>
+
+			<p>
+				You can find more information on the University's Policy on
+				Student Academic
+				Integrity in the Course Outline and at <a
+					href="http://www.newcastle.edu.au/about-uon/governance-and-leadership/policy-library">
+					Policy Library</a>.
+			</p>
+
+		</div>
+
+		<hr>
+
+		<h2 id="marking">10. Marking Guide</h2>
+
+		<p>
+			The following serves as a rough guide to how many marks are allocated
+			to each section of the assignment. Please refer to the rubrics on Canvas for a complete
+			breakdown.
+		</p>
+
+		<p>Total Marks: 92</p>
+
+		<ul>
+			<li><a href="#all">General Requirements</a>: 12</li>
+			<li><a href="#server">Web Server Setup and Website Import</a>: 6.5</li>
+			<li><a href="#data">Genre Pages</a>: 13.5</li>
+			<li><a href="#form">Data Collection Page</a>: 22</li>
+			<li><a href="#style">Responsive Web Design</a>: 6</li>
+			<li><a href="#coding">Coding Style</a>: 32</li>
+			<li><a href="#extra">[Bonus Task] Form Submission Script</a>: [5]</li>
+			<li>You may be penalised for poor aesthetic appearence, untidiness, spelling and grammar
+				problems, and not correctly following instructions: [-10]</li>
+		</ul>
+
+	</div>
+
+</body>
+
+</html>

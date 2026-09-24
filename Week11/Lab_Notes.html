@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>SENG1050 - Laboratory 11</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style type="text/css">
+		kbd,
+		samp,
+		code,
+		span.file {
+			color: blue
+		}
+
+		ul {
+			list-style-type: none
+		}
+
+		td {
+			padding: 5px;
+			text-align: center
+		}
+	</style>
+	</meta>
+</head>
+
+<body>
+	<div id="body">
+		<h1>SENG1050<br>Lab 11</h1>
+		<p>
+			In this lab, you will focus on completing Assessment 3. With the available time after, you may explore some examples on RSA encryption and steganography.
+
+		</p>
+
+		<hr>
+
+		<div class="toc">
+			<a href="#rsa">Task 1</a> -
+			<a href="#steg">Task 2</a>
+		</div>
+
+		<hr>
+
+		<div id="Milestone">
+
+		<h2 style="color: red">Assessment 3 (Important!)</h2>
+
+		<p>
+			Work on Assessment 3 (Web-Based Assignment 2) and get your milestones graded by this week. Your assessment
+			is also due this Friday.
+		</p>
+
+		</div>
+
+		<hr>
+
+		<h2 id="review">Task 1 - RSA Encryption (Optional - Not in Exams)</h2>
+		<p>
+			RSA is a popular asymmetric encryption scheme.
+			The scheme works by generating separate public and private keys that are
+			mathematical inverses of each other for the purpose of encryption. <br>
+			This mathematical relationship allows a message encrypted with a public key to
+			be decrypted with the matching private key and vice versa, a message encrypted
+			with a private key can be decrypted with the matching public key. <br>
+			The complete RSA scheme is presented in Lecture 11 and we will only reiterate the key generation process as
+			follows:
+		</p>
+		<ol>
+			<li>
+				Starting off, we choose two prime numbers, defined as <code>p</code> and
+				<code>q</code>.
+				In practice, these should be large prime numbers, but for simplicity, we will
+				choose small numbers in this example, such that <code>p = 3</code> and
+				<code>q = 5</code>.
+			</li>
+			<li>
+				Both the public and private keys need a common element, <code>n</code>,
+				such that <code>n = p*q</code>.
+				In this example, <code>n = 15</code>.
+			</li>
+			<li>Now, we need to calculate the modulus that we will be using, <code>w</code>,
+				such that <code>w = (p-1)*(q-1)</code>.
+				In this example, <code>w = 8</code>.
+			</li>
+			<li>
+				Now, we choose the unique element of the public key, <code>e</code>.
+				<code>e</code> can be any number from 1 to <code>w</code> as long
+				as it does not share any common factors with <code>w</code> (aside from 1).
+				<br>
+				In this example, we could choose 1, 3, 5, or 7 (but choosing 1 would result
+				in no encryption being performed at all!). We could not choose a number like
+				6, because 2 is a factor of both 6 and 8. <br>
+				Let us choose <code>e = 7</code>. The public key is <code>&lt;e, n> = &lt;7, 15></code>.
+			</li>
+			<li>
+				Now, choose the unique element of the public key, <code>d</code>.
+				<code>d</code> needs to be a multiplicative inverse of <code>e</code> under
+				the modulus <code>w</code>, i.e., <code>e*d mod w = 1</code>. <br>
+				As it happens, we can only have <code>d = 7</code> as
+				<code>e*d mod w = 7*7 mode 8 = 49 mod 8 = 1</code>. <br>
+				The private key is <code>&lt;d, n> = &lt;7, 15></code>, which coincidentally,
+				is the same as the public key established in step 4.
+			</li>
+		</ol>
+		<p>
+			The keys generated go against the principle of asymmetric key encryption and is
+			a result of choosing small prime numbers in step 1.
+			This further emphasizes the need of having large prime numbers, which will also
+			be challenging for computers trying to perform prime factorization. <br>
+			As a practice, consider the RSA public key <code>&lt;e, n> = &lt;23, 35></code>.
+			What would the private key be?
+			(<i>Hint:</i> Your first step would be determining the prime numbers,
+			<code>p</code> and <code>q</code>, that were used.)
+		</p>
+
+		<hr>
+
+		<h2 id="steg">Task 2 - Steganography (Optional - Not in Exams)</h2>
+
+		<p>
+			Cryptography (for confidentiality) encrypts a message so that even if it is
+			intercepted, it cannot be read.
+			Steganography hides the fact that the message exists at all.
+			It is often used in publications or software to combat piracy.
+			Let's have some fun with the following activity:
+		</p>
+
+		<ol>
+			<li>Download <code>steg.zip</code> available on Canvas and extract the contents to your preferred directory.
+			</li>
+			<li>Open <code>S-Tools.exe</code>.</li>
+			<li>
+				Click and drag <code>zebras.bmp</code> into the S-Tools window.
+				Expand the graphic to see the photo of zebras if necessary.
+			</li>
+			<li>
+				Right click on the image and select Reveal.
+				When prompted, enter the passphrase 'abc' (without the quotes).
+				Leave the encryption algorithm as "IDEA" and click OK.
+			</li>
+			<li>Study the revealed files.</li>
+			<li>
+				Repeat steps 4 and 5 with <code>chi_in_bear.gif</code>.
+				Use the passphrase 'strange' (without the quotes) instead.
+			</li>
+			<li>Read the article <code>Clair.pdf</code> to understand how steganography
+				works.</li>
+		</ol>
+
+		<hr>
+
+	</div>
+
+</body>
+
+</html>

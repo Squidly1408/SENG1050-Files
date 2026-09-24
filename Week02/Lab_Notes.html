@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SENG1050 - Lab 2</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="body">
+        <h1>SENG1050<br>Lab 2</h1>
+        <p> In this lab, you will gain experience in constructing web pages by creating a HTML template and learning the
+            usage of HTML tags. </p>
+        <hr>
+
+        <div class="toc">
+            <a href="#template">Task 1*</a> -
+            <a href="#html">Task 2*</a> -
+            <a href="#htmlLink">Task 3*</a> -
+            <a href="#htmlvalid">Task 4*</a>
+        </div>
+
+        <hr>
+
+        <h2 id="template">Task 1 - Create a HTML Template</h2>
+
+        <p>
+            As all HTML pages are required to have a certain minimum structure,
+            it is a good idea to keep a template file containing that structure.
+            You can then copy the file each time you need to create a new web
+            page.
+        </p>
+
+        <ol>
+            <li>Create a new directory. Perhaps you could call it <span class="file">seng1050</span>. <br>If you're
+                using a lab computer, it is recommended that you create a temporary folder in My Documents,
+                which you can copy to your student Onedrive at the end of the lab.</li>
+            <li>Launch your favourite plain-text editor. This could be notepad, notepad++, or some other
+                editor designed to produce <span class="file">.txt</span> files.<br>
+                <strong>Do not</strong> use a "word processor", such as Microsoft
+                Word or a web authoring tool like Frontpage and Dreamweaver. The special formatting information used by
+                word processors
+                will make your HTML files <strong>invalid.</strong>
+            </li>
+            <li>Create a new file in your text editor and cut-and-paste the following line:
+                <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+                This tells the Web browser that you are using HTML.
+            </li>
+            <li>Below the first line, cut-and-paste the following lines:
+                <pre><code>
+   &lt;html&gt;
+   &lt;head&gt;
+   &lt;meta charset="UTF-8"&gt;
+   &lt;/head&gt;
+
+   &lt;body&gt;
+   &lt;/body&gt;
+
+   &lt;/html&gt;
+                    </code></pre>
+                You now have the basic structure of a HTML document.
+            </li>
+            <li>Next, create a title (<code>&lt;title&gt;</code>) element inside the head (<code>&lt;head&gt;</code>)
+                element, resulting in the following:
+                <pre><code>
+   &lt;head&gt;
+   &lt;title&gt;Put the Title Here&lt;/title&gt;
+   &lt;meta charset="UTF-8"&gt;
+   &lt;/head&gt;
+                    </code></pre>
+                You should also add a level-1 heading (<code>&lt;h1&gt;</code>) element inside the body
+                (<code>&lt;body&gt;</code>) element, resulting in the following:
+                <pre><code>
+   &lt;body&gt;
+   &lt;h1&gt;Put the Most Important Heading Here&lt;/h1&gt;
+   &lt;/body&gt;
+                </code></pre>
+            </li>
+            <li>Save the file you have created into the new directory in step 1.
+                Call the file <span class="file">template.html</span>.</li>
+        </ol>
+
+        <p>
+            Open the file in your favourite Web browser (either start the
+            Web browser and use the <span class="menu">File</span> menu,
+            or simply double-click on the file). It should look something like this. (The title bar
+            might look different on different browsers or OSes.)
+        </p>
+
+        <div class="img">
+            <img src="template-small.png" alt="HTML template file">
+        </div>
+
+        <p>
+            Be careful to ensure the file is saved as
+            <span class="file">template.html</span> and not
+            <span class="file">template.html.txt</span> - some text editors
+            will do the latter by default when creating a new file.
+            To avoid this, be sure to set the <span class="menu">File Type</span>
+            to all files.
+        </p>
+
+        <p>
+            It is also a good idea to slightly change the settings on Microsoft's
+            File Explorer.<br>From the menubar, select
+            <span class="menu">Tools</span> then
+            <span class="menu">Folder Options</span>.
+            Select <span class="menu">View</span>, and make sure the box labelled
+            <span class="menu">Hide extensions for known file types</span> is
+            <strong>not</strong> ticked.<br>This will enable you to see full filenames, including whether the suffix is
+            <span class="file">.html</span> or
+            <span class="file">.html.txt</span>.
+        </p>
+
+        <hr>
+
+        <h2 id="html">Task 2 - Adding HTML Tags to Your Content</h2>
+
+        <ol>
+            <li>Before you start, think about three of your favourite things.<br>For each thing, find a webpage and an
+                image related to it.<br>Copy the original URLs of both the webpage and the image, and download the
+                image to your computer, you'll need these later.</li>
+            <li>Make a copy of <span class="file">template.html</span>
+                and call it <span class="file">index.html</span>.<br>Open <span class="file">index.html</span> in your
+                favourite plain-text editor.</li>
+            <li>Change the content of the title (<code>&lt;title&gt;</code>)
+                and level-1 heading (<code>&lt;h1&gt;</code>) elements to be
+                <code>My Favourite Things</code>.
+            </li>
+            <li>Immediately after the level-1 heading element, create three level-2 heading (<code>&lt;h2&gt;</code>)
+                elements.<br>Each level-2
+                heading element will contain one of your favourite things as the content.</li>
+            <li>Add paragraph tags (<code>&lt;p&gt;</code>)
+                around each paragraph of text describing a favourite thing.<br>Use <code>&lt;strong&gt;</code> and
+                <code>&lt;em&gt;</code> tags to strongly emphasize some phrase or words in your description.
+            </li>
+            <li>Under each paragraph, start an unordered list
+                (<code>&lt;ul&gt;</code>) element.<br>Each list should contain two items (<code>&lt;li&gt;</code>):
+                the URL of the Web page about
+                that favourite thing, and the <em>original</em> URL of the image
+                related to that favourite thing.<br>Each URL should be hyperlinked to its destination, i.e., using
+                <code>&lt;a href="</code><var>url</var><code>"&gt;</code><var>url</var><code>&lt;/a&gt;</code>.
+            </li>
+            <li>After the unordered list, add a quotation related to your favourite item using the
+                <code>&lt;blockquote&gt;</code> tag.<br>You should use the '<code>cite</code>' attribute to add a URL
+                referring to the source of the citation.
+            </li>
+            <li>After each blockquote, place an image (<code>&lt;img&gt;</code>) element linking to the local copy of
+                the image you downloaded.<br>As an image element is an inline element and must be placed inside a block
+                element, place a <code>&lt;div&gt;</code> tag around the <code>&lt;img&gt;</code> tag.
+                For example:
+                <pre><code>
+       &lt;div&gt;
+       &lt;img src="bear.gif" alt="Teddy Bear" /&gt;
+       &lt;/div&gt;
+                    </code></pre>
+            </li>
+            <li>At the bottom of the page, add a horizontal rule (<code>&lt;hr&gt;</code>), and then add an address
+                (<code>&lt;address&gt;</code>) element.<br>Place your contact details (name, email address, student
+                number and degree program) as content of the address (<code>&lt;address&gt;</code>) element.<br>Separate
+                each logical line of the address with a break (<code>&lt;br&gt;</code>) tag.</li>
+        </ol>
+
+        <p>
+            Open the file in your favourite Web browser.
+            It should look something like this.
+        </p>
+
+        <div class="img">
+            <img src="content-small.png" alt="HTML file with content">
+        </div>
+
+        <p><strong>Go to task 3 now, come back here at the end if you have time.</strong></p>
+        <p> If you have time, experiment with some other tags introduced in Lecture 2. You might include </p>
+        <ul>
+            <li>The creation date of your html file using &lt;sup&gt; tag to format the date.</li>
+            <li>A sample of verse (perhaps from the Internet) referring to your favourite things formatted using
+                &lt;blockquote&gt;.</li>
+            <li>A definition list.</li>
+            <li>Abbreviations.</li>
+            <li>Special Characters: &lt;, &gt; &amp;.
+            </li>
+            <li>A sample of computer code (say Java or C++) with input and output.</li>
+            <li>Any other use of tags from Lecture 2, such as input instructions, definitions or citations.</li>
+        </ul>
+        <hr>
+        <h2 id="htmlLink">Task 3 - Learn to link your HTML documents</h2>
+        <h3> Linking to Identifiers</h3>
+        <ol>
+            <li>Create another copy of <span class="file">index.html</span>
+                and call it <span class="file">index2.html</span>.<br>Open this new file in your favourite plain-text
+                editor.</li>
+            <li>At the top of the page (under the <code>&lt;h1&gt;</code> element), create a <code>&lt;div&gt;</code>
+                element. </li>
+            <li>Inside the <code>&lt;div&gt;</code> element, create three anchor (<code>&lt;a&gt;</code>) elements, one
+                for each of your favourite things.<br>Insert unique names preceded by the # sign in the
+                <code>href</code> attribute field of each anchor element.
+            </li>
+            <li>Now, complete the linking by putting the chosen names in the corresponding <code>&lt;h2&gt;</code>
+                elements' <code>id</code> attribute field.
+            </li>
+            <li>Verify that your links are working correctly.</li>
+            <li>Finally, add one <code>&lt;hr&gt;</code> before and after the <code>&lt;div&gt;</code> element you
+                created for links.
+            </li>
+        </ol>
+
+        <h3> Linking among different files</h3>
+        <ol>
+            <li>Create one separate html file for each of your favourite things by copying the original <span
+                    class="file">index.html</span>.<br>
+                Each file will contain information about one of your favourite thing. You can reuse what you have
+                starting from the
+                <code>&lt;h2&gt;</code> heading to the image of that particular favourite thing.<br>Rename each of the
+                files, e.g., as <span class="file">favourite01.html</span>, <span class="file">favourite02.html</span>,
+                etc.
+            </li>
+            <li>Create another new html file from the original <span class="file">template.html</span>.
+                Treat this as your menu page and name it as <span class="file">favourite.html</span>.<br>Create a
+                <code>&lt;div&gt;</code> element with
+                links to each of your
+                favourite things saved in different files.
+            </li>
+            <li>Now, open each of the files containing your favourite things (<span
+                    class="file">favourite01.html</span>, <span class="file">favourite02.html</span>, etc.) and at the
+                bottom, add a link to go back to
+                the menu page (<span class="file">favourite.html</span>). </li>
+            <li>Visit each link to verify that those are working properly</li>
+        </ol>
+
+        <hr>
+
+        <h2 id="htmlvalid">Task 4 - HTML Validation</h2>
+
+        <p>
+            As you should learn very quickly in this course,
+            just because a Web page <em>looks</em> correct in <em>your</em>
+            browser on <em>your</em> computer, doesn't mean that it is
+            correct.
+            The easiest way to check whether a web page is correct is to
+            use a web validation service.
+        </p>
+
+        <ol>
+            <li>Go to the
+                <a href="http://validator.w3.org/" target="_blank">W3C MarkUp Validation Service.</a>
+            </li>
+            <li>On the <span class="menu">Validate By File Upload</span> tab in the web page, select your
+                web page file, then click on the <span class="menu">Check</span> button.</li>
+        </ol>
+
+        <p>
+            If all is well, then the validator will announce that your page
+            contains no errors. If it does find any errors, then it will
+            try to tell you why the error occurred and on which line of the file. Try to ensure your webpages pass
+            validation with no errors OR warnings.
+        </p>
+
+        <p>
+            Tip: always fix the <em>first</em> error that the validator reports
+            (the one nearest the top of the list), then revalidate (use the
+            <span class="menu">Reload/Refresh</span> button of your browser.
+            Fixing the first reported error will often fix the second as well -
+            and the third, and the fourth ...
+        </p>
+
+        <p><strong>
+                All code you write for your assignments MUST pass validation. If any errors are reported, you will lose
+                a significant amount of marks. <br>
+                For assignment 2, this will be stricter, even warnings will need to be addressed.</strong>
+        </p>
+        <hr>
+    </div>
+</body>
+
+</html>

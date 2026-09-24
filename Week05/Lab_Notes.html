@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SENG1050 - Laboratory 5</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="body">
+
+        <h1>SENG1050<br>Lab 5</h1>
+
+        <p>
+            In this lab, you will gain experience in advance HTML topics, such as forms and tables, and advance CSS.
+        </p>
+
+        <hr>
+
+        <div class="toc"><a href="#forms">Task 1*</a> - <a href="#tables">Task 2</a> - <a href="#layout">Task 3</a>
+        </div>
+
+        <hr>
+
+        <h2 id="forms">Task 1 - HTML Forms</h2>
+
+        <p>In this task, you are going to use HTML form elements and attributes to create a simple form for submitting
+            information to a web server. Note that you need not know how the CGI script is working. The main
+            aim of this task is for you to become familiar with the various HTML form elements, to help you create forms
+            for the assignments.
+        </p>
+
+        <ol>
+            <li>Make a new copy of your <span class="file">template.html</span> file from Lab 2 and open it in your
+                favourite plain-text editor (e.g., notepad or textpad).</li>
+            <li>After adding an appropriate title and level-1 heading, insert form tags into the body of your document:
+                <pre><code>&lt;form&gt;
+&lt;/form&gt;</code></pre>
+            </li>
+            <li>In the opening of the form tag, include the attributes <code>method="post"</code> and
+                <code>action="https://jkorpela.fi/cgi-bin/echo.cgi"</code>.
+            </li>
+            <li>Within the form, place elements to accept the following information:
+                <ul>
+                    <li>
+                        The applicant's first name (<code>&lt;input type="text"&gt;</code>, include the <code>placeholder="First name only"</code> and <code>required</code> attributes)
+                    </li>
+                    <li>
+                        The applicant's last name (similar to first name)
+                    </li>
+                    <li>
+                        The applicant's date of birth (<code>&lt;input type="date"&gt;</code>, include the <code>required</code> attribute)
+                    </li>
+                    <li>
+                        The applicant's age (<code>&lt;input type="number"&gt;</code>, include the <code>min, max</code>, and
+                        <code>value</code> attributes to set the minimum, maximum, and default ages)
+                    </li>
+                    <li>
+                        The applicant's email (<code>&lt;input type="email"&gt;</code>, include the <code>placeholder</code> and <code>required</code> attributes)
+                    </li>
+                    <li>
+                        The applicant's website (<code>&lt;input type="url"&gt;</code>, include the <code>placeholder</code>
+                        attribute)
+                    </li>
+                    <li>
+                        The applicant's phone number (<code>&lt;input type="tel"&gt;</code>, include the <code>placeholder</code> and <code>required</code> attributes)
+                    </li>
+                    <li>
+                        The applicant's skill level (<code>&lt;input type="range"&gt;</code>, include the <code>min="1", max="10"</code>, and <code>value="1"</code> attributes)
+                    </li>
+                    <li>
+                        The applicant's address (<code>&lt;textarea&gt;</code>, include the <code>rows="5"</code> and <code>required</code> attributes)
+                    </li>
+                    <li>
+                        The applicant's postcode (<code>&lt;input type="text"&gt;</code>, include the <code>size="4"</code> and
+                        <code>maxlength="4"</code> attributes)
+                    </li>
+                    <li>
+                        The applicant's state (<code>&lt;select&gt;</code> and <code>&lt;option&gt;</code>.
+                        Use one <code>&lt;option&gt;</code> tag for each of the states
+                        (<code>NSW,QLD,SA,TAS,VIC,WA</code>) )
+                    </li>
+                    <li>
+                        The applicant's card type (create three <code>&lt;input type="radio"&gt;</code> buttons; include the
+                        <code>name</code> attribute to ensure that only one of the three card types
+                        (<code>visa,mastercard,amex</code>) can be chose; set <code>visa</code> to be the default
+                        choice using the <code>checked</code> attribute)
+                    </li>
+                    <li>The name on the card (similar to first name/last name)</li>
+                    <li>The card number (<code>&lt;input type="number"&gt;</code>)</li>
+                    <li>
+                        The card's security code (<code>&lt;input type="number"&gt;</code>, include the <code>min="001"</code> and
+                        <code>max="999"</code> attributes to enforce the security code to be a 3 digit positive number)
+                    </li>
+                    <li>The card's expiry date (<code>&lt;input type="month"&gt;</code>)</li>
+                    <li>
+                        For each form control, associate a label with the <code>&lt;label&gt;</code> tag (use explicit
+                        labelling).
+                    </li>
+                    <li>
+                        Group the form controls into four groups with <code>&lt;fieldset&gt;</code> and
+                        <code>&lt;legend&gt;</code> tags as shown in the following figure.
+                    </li>
+                    <li>There should also be a button to submit the form, and a button to reset the form.</li>
+                </ul>
+        </ol>
+        <div>
+            <p>Your form could look something like this:</p>
+            <div class="img">
+                <figure><img src="form.png" alt="Sample Form" /></figure>
+            </div>
+        </div>
+
+        <p>After submitting the form, you should see a list of the information that the server-side CGI script received
+            from your web browser.</p>
+
+        <p>Be sure to <a href="http://validator.w3.org/" target="_blank">validate</a> your HTML page.</p>
+        <hr>
+
+        <h2 id="tables">Task 2 - HTML Tables</h2>
+        <p>In this task, you are going to use an HTML table to display some statistical data from the web.</p>
+        <ol>
+            <li>
+                Make a new copy of your <span class="file">template.html</span> file from Lab 2 and open it in your
+                favourite plain-text editor.</li>
+            <li>After adding an appropriate title and level-1 heading, insert table tags into the body of your document:
+                <pre><code>&lt;table&gt;
+&lt;/table&gt;</code></pre>
+            </li>
+            <li>
+                Inside the table tags, insert the <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> and
+                <code>&lt;tfoot&gt;</code> tags (they <strong>must</strong> be in that order and don't forget each
+                corresponding closing tags).
+            </li>
+            <li>
+                Access the <a href="http://ftp.isc.org/www/survey/reports/2013/01/bynum.txt"
+                    target="_blank">Distribution of Top-Level Domain Names by Host Count, January 2013</a> page hosted
+                by the <a href="http://www.isc.org/" target="_blank">Internet Systems Consortium</a>. You will use the
+                data from this site (just the first 6-7 rows will do) to create your table.
+            </li>
+            <li>
+                In the head (<code>&lt;thead&gt;</code>) of your table , create a row (<code>&lt;tr&gt;</code>) for the
+                headings of the table. <br>
+                Populate each cell (column) of this row
+                using the table heading (<code>&lt;th&gt;</code>) tag. <br>
+                You will use the content from row 1 of the <a
+                    href="http://ftp.isc.org/www/survey/reports/2013/01/bynum.txt" target="_blank">original data</a>.
+            </li>
+            <li>
+                In the body (<code>&lt;tbody&gt;</code>) of your table , create the necessary rows
+                (<code>&lt;tr&gt;</code>) for the data of the table. <br>
+                Populate each cell (column) of these rows using the table data (<code>&lt;td&gt;</code>) tag. <br>
+                You will use the content from row 3 to 7 of the <a
+                    href="http://ftp.isc.org/www/survey/reports/2013/01/bynum.txt" target="_blank">original data</a>.
+            </li>
+            <li>
+                In the foot (<code>&lt;tfoot&gt;</code>) of your table , create a row (<code>&lt;tr&gt;</code>) for the
+                foot of the table. <br>
+                Populate each cell (column) of this row using the table data (<code>&lt;td&gt;</code>) tag. <br>
+                You will use the content from row 2 of the <a
+                    href="http://ftp.isc.org/www/survey/reports/2013/01/bynum.txt" target="_blank">original data</a>.
+            </li>
+            <li>Finally, add an appropriate <code>&lt;caption&gt;</code> to the table, which includes a hyperlink to the
+                source of the <a href="http://ftp.isc.org/www/survey/reports/2013/01/bynum.txt" target="_blank">original
+                    data</a>.
+            </li>
+        </ol>
+        <p>Now, you can add visual formatting suggestions for your table using embedded CSS styles.</p>
+        <ol>
+            <li>In the content of the <code>&lt;head&gt;</code> tag, place a CSS <code>&lt;style&gt;</code> tag:
+                <pre><code>&lt;style&gt;
+&lt;/style&gt;</code></pre>
+            </li>
+            <li>Inside this <code>&lt;style&gt;</code> tag, add CSS rules to suggest visual formatting for your tables.
+                Try to replicate the styling of the table in the figure below:
+                <ul>
+                    <li>
+                        You will have to add <code>class</code> attributes to some tags to differentiate certain rows
+                        and columns.
+                    </li>
+                    <li>
+                        You should at least change the text alignment of the numbers to be right aligned, without
+                        changing the alignment of the rest of the table's cells (hint: apply
+                        <code>text-align: right</code> to the body and footer of the table. Then, override the cells in
+                        the first column of the table and the last column of the body of the table with
+                        <code>text-align: left</code>.
+                    </li>
+                    <li>
+                        You should have different background colours for the cells of the head, body, and foot of the
+                        table.
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>Don't forget to validate your <a href="http://validator.w3.org/" target="_blank">HTML</a> and <a
+                href="http://jigsaw.w3.org/css-validator/" target="_blank">CSS</a>.</p>
+        <p>Your completed table should look something like this (but with current figures and only a few rows of data).
+        </p>
+        <div class="img">
+            <figure><img src="table-small.png" alt="Table of statistics" width="700" /></figure>
+        </div>
+        <h4>More tasks with table (optional/homework)</h4>
+        <p>Change your table with <code>'rowspan'</code> and <code>'colspan'</code> attributes.</p>
+        <ul>
+            <li>Using <code>'colspan'</code> property, merge cells (r3,c5) and (r3,c6) where (rX,cY) represent the cell
+                at row X, column Y of the body of the table.</li>
+            <li>Using <code>'rowpan'</code> property, merge cells (r5,c2), (r6,c2) and (r7, c2).</li>
+            <li>Insert random numbers in these merged cells.</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="layout">Task 3 - Advance CSS Layouts</h2>
+
+        <p>In this task, you are going to format a web page using the advanced CSS layout properties. These will be implemented as embedded CSS styles.</p>
+
+        <ol>
+            <li>Download the template files provided through task3.zip in the Week 6 Canvas module.</li>
+            <li>The first step is to format the navigation links into a horizontal navbar by doing the following. <ul>
+                    <li>Float each list item left and remove the bullets.</li>
+                    <li>Place a background colour on the parent &lt;ul> element. You'll need to set
+                        <code>overflow: hidden</code> so that the parent expands around the floated elements.
+                    </li>
+                    <li>Now, change the background colour of individual list items on hover.</li>
+                    <li>Notice the difference between the list item and anchor elements, we want the entire box to be a
+                        clickable link. Remove margins and padding on the unordered list element and place them on the
+                        anchor tags instead. You'll need to set the display property to either block or inline-block for
+                        this to take effect.</li>
+                    <li>Now, we want to make the navbar stick to the top of the screen as the user scrolls down. Set the
+                        position property of the navbar to sticky. Why doesn't this work? To fix this problem, set the
+                        display property of the &lt;header> element to 'contents'.</li>
+                    <li>The end result could look something like the following image: <br> <img src="navbar.PNG" alt=""
+                            height="100" style="border: 2px solid black;"></li>
+                </ul>
+            <li>Now, it's time to handle that huge block of sample text: <ul>
+                    <li>Set a fixed height for the text-block of about 30em.</li>
+                    <li>Set the overflow property to scroll.</li>
+                </ul>
+            </li>
+            <li>
+                Now, let's look at the featured books section: <ul>
+                    <li>We'll use a columnar layout for this, set the columns property to produce 3 columns.</li>
+                    <li>Shrink the images, and have them float left so that the text wraps around on the right side.
+                    </li>
+                    <li>To prevent an article element from spanning multiple columns, target the article element with
+                        the CSS rules: <code>break-inside: avoid; clear: left; overflow: hidden</code>. You may also set
+                        a bottom margin to your liking.</li>
+                    <li>The end result could look something like this: <br><img src="featured.PNG" alt="" height="300"
+                            style="border: 2px solid black;"></li>
+                </ul>
+            <li>Finally, we will use a flexbox to layout the gallery section: <ul>
+                    <li>Set the gallery to be a flexbox with a fixed height of about 10cm.</li>
+                    <li>Enable scrolling using the CSS rule <code>overflow-x: scroll</code>.</li>
+                    <li>Format the images to be the same height using height: 100% and put some padding between them.
+                    </li>
+                </ul>
+            </li>
+            <li>Can you make this look better? Try different properties, cleanup some of the rough edges of the layout,
+                and make the page look as good as you can.</li>
+        </ol>
+
+        <p>Be sure to <a href="http://validator.w3.org/" target="_blank">validate</a> your HTML page.</p>
+
+        <hr>
+
+    </div>
+
+</body>
+
+</html>

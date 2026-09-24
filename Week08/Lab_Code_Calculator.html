@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>A Very Simple Calculator</title>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            function calculator() {
+                            var x = document.the_form.field_one.value;
+                            var y = document.the_form.field_two.value;
+                            var p = x * y;
+                            alert(x + " times " + y + " is " + p);
+                        } // calculator()       
+        </script>
+    </head>
+
+    <body>
+        <p>This is a simple calculator. You can add addition, subtraction and division.</p>
+        <form name="the_form">
+            <label for="field_one">Number 1: </label>
+            <input type="text" name="field_one" id="field_one"> <br>
+            <label for="field_two">Number 2: </label>
+            <input type="text" name="field_two" id="field_two"> <br>
+            <input type="button" value="multiply them!" onclick="calculator()">
+        </form>
+    </body>
+</html>  
+
